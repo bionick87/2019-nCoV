@@ -15,9 +15,9 @@ def readGenSeq(path_file):
         data = f.read()
     return data
 
-def multiprocessing_func(nCoV_seq,hiv_seq):
+def multiprocessing_func(nCoV_seq,hiv_seq,path_save):
     alignments     = pairwise2.align.globalxx(nCoV_seq,hiv_seq)
-    oh             = open("./out/out.txt", "w")
+    oh             = open(path_save, "w")
     for a in alignments:
         oh.write(format_alignment(*a))
 
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     starttime      = time.time()
     processes      = []
     for i in range(0,n_process):
-        p = multiprocessing.Process(target=multiprocessing_func, args=(nCoV_seq,hiv_seq))
+        p = multiprocessing.Process(target=multiprocessing_func, args=(nCoV_seq,hiv_seq,path_save))
         processes.append(p)
         p.start()
     for process in processes:
