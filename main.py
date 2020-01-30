@@ -24,10 +24,10 @@ def multiprocessing_func(nCoV_seq,hiv_seq,path_save):
 if __name__ == "__main__":
 
     # https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3?report=fasta
-    path_file_nCoV = "/mnt/storage/home/nsavioli/2019-nCoV/virus_genome/2019-nCoV.txt"
+    path_file_nCoV = "./2019-nCoV/virus_genome/2019-nCoV.txt"
     # https://www.ncbi.nlm.nih.gov/nuccore/NC_001722.1?report=fasta
-    path_file_hiv  = "/mnt/storage/home/nsavioli/2019-nCoV/virus_genome/HIV.txt"
-    path_save      = "/mnt/storage/home/nsavioli/2019-nCoV/result.txt"
+    path_file_hiv  = "./2019-nCoV/virus_genome/HIV.txt"
+    path_save      = "./2019-nCoV/result.txt"
     nCoV_seq_str   = readGenSeq(path_file_nCoV)
     HIV_seq_str    = readGenSeq(path_file_hiv)
     #nCoV_seq_str  = "ACGGGT"
