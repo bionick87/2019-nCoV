@@ -30,8 +30,8 @@ if __name__ == "__main__":
     path_save      = "/mnt/storage/home/nsavioli/2019-nCoV/result.txt"
     nCoV_seq_str   = readGenSeq(path_file_nCoV)
     HIV_seq_str    = readGenSeq(path_file_hiv)
-    nCoV_seq_str  = "ACGGGT"
-    HIV_seq_str   = "ACG"
+    #nCoV_seq_str  = "ACGGGT"
+    #HIV_seq_str   = "ACG"
     n_process      = 10
     nCoV_seq       = Seq(nCoV_seq_str)
     hiv_seq        = Seq(HIV_seq_str)
