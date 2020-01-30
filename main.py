@@ -26,7 +26,7 @@ if __name__ == "__main__":
     path_file_nCoV = "/mnt/storage/home/nsavioli/2019-nCoV/virus_genome/2019-nCoV.txt"
     # https://www.ncbi.nlm.nih.gov/nuccore/NC_001722.1?report=fasta
     path_file_hiv  = "/mnt/storage/home/nsavioli/2019-nCoV/virus_genome/HIV.txt"
-    path_save      = "/mnt/storage/home/nsavioli/out/result.txt"
+    path_save      = "/mnt/storage/home/nsavioli/2019-nCoV/out/result.txt"
     nCoV_seq_str   = readGenSeq(path_file_nCoV)
     HIV_seq_str    = readGenSeq(path_file_hiv)
     nCoV_seq_str  = "ACGGGT"
