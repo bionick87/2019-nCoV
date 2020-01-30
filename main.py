@@ -29,9 +29,9 @@ if __name__ == "__main__":
     path_save      = "./result.txt"
     nCoV_seq_str   = readGenSeq(path_file_nCoV)
     HIV_seq_str    = readGenSeq(path_file_hiv)
-    #nCoV_seq_str  = "ACGGGT"
-    #HIV_seq_str   = "ACG"
-    n_process      = 20
+    nCoV_seq_str  = "ACGGGT"
+    HIV_seq_str   = "ACG"
+    n_process      = 10
     nCoV_seq       = Seq(nCoV_seq_str)
     hiv_seq        = Seq(HIV_seq_str)
     starttime      = time.time()
