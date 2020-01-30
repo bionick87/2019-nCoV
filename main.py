@@ -22,6 +22,7 @@ def multiprocessing_func(nCoV_seq,hiv_seq,path_save):
         oh.write(format_alignment(*a))
 
 if __name__ == "__main__":
+    
     # https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3?report=fasta
     path_file_nCoV = "/mnt/storage/home/nsavioli/2019-nCoV/virus_genome/2019-nCoV.txt"
     # https://www.ncbi.nlm.nih.gov/nuccore/NC_001722.1?report=fasta
