@@ -6,7 +6,7 @@ Deep learning application to track virus evolution by analyzing the online seque
 The network is based on a Siamese neural network that takes features of COVID-2019 sequences as input. More specifically, each sequence of n nucleotide bases is converted into an image and passed through a convolutional network. The aim is to find nucleotide sequences that vary from virus and understand COVID-2019 evolution over time and describe the latent space through a generative network. 
 The code is released for research purposes only.
 
-![alt text](img/img.png)
+![alt text](img/img.jpg)
 
 
 ## TODO
@@ -16,7 +16,7 @@ The code is released for research purposes only.
 
 ### Prerequisites
 
-Before getting started with 4DSuperRes, it's important to have a working environment with all dependencies satisfied. For this, we recommend using the Anaconda distribution of Python 3.5.
+Before getting started, it's important to have a working environment with all dependencies satisfied. For this, we recommend using the Anaconda distribution of Python 3.5.
 
 ```
 cd /tmp
