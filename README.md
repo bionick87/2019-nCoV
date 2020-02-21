@@ -1,13 +1,12 @@
 # 
 
-![alt text](img/img.png)
-
-
 ## Getting Started
 
 Deep learning application to track virus evolution by analyzing the online sequence between two COVID-2019 samples at different time points.
 The network is based on a Siamese neural network that takes features of COVID-2019 sequences as input. More specifically, each sequence of n nucleotide bases is converted into an image and passed through a convolutional network. The aim is to find nucleotide sequences that vary from virus and understand COVID-2019 evolution over time and describe the latent space through a generative network. 
 The code is released for research purposes only.
+
+![alt text](img/img.png)
 
 
 ## TODO
