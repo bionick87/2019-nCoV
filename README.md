@@ -4,7 +4,7 @@
 ## Purpose 
 
 Deep learning application to track COVID-2019 virus evolution by analyzing the RNA sequence between two COVID-2019 samples at different time points.
-The network is based on a deep Siamese Neural Network (https://www.cs.utoronto.ca/~gkoch/files/msc-thesis.pdf) that takes a strand of COVID-2019 sequences as input. More specifically, each strand is converted into a grayscale image of 256x256 pixel size and passed through two convolutions convolutional networks (see at the plot below). However, this DeepNet is trained towards negative examples with Human Immunodeficiency Viruses (HIV) strand examples.
+The network is based on a deep Siamese Neural Network (https://en.wikipedia.org/wiki/Siamese_neural_network) that takes a strand of COVID-2019 sequences as input. More specifically, each strand is converted into a grayscale image of 256x256 pixel size and passed through two convolutions convolutional networks (see at the plot below). However, this DeepNet is trained towards negative examples with Human Immunodeficiency Viruses (HIV) strand examples.
 The aim is to find nucleotide sequences that stably characterizes COVID-2019 for finding a specific RNA biomarker strand.
 
 ### Wuhan-Hu-1 isolated coronavirus 2 complete genome sequences have been downloaded from link below and saved in the project folder ./virus_genome
