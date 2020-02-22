@@ -7,11 +7,11 @@ Deep learning application to track COVID-2019 virus evolution by analyzing the R
 The network is based on a deep Siamese Neural Network (https://www.cs.utoronto.ca/~gkoch/files/msc-thesis.pdf) that takes a strand of COVID-2019 sequences as input. More specifically, each strand is converted into a grayscale image of 256x256 pixel size and passed through two convolutions convolutional networks. However, the net is trained towards negative examples with Human Immunodeficiency Viruses (HIV) strand examples.
 The aim is to find nucleotide sequences that stably characterizes COVID-2019 for finding a specific RNA biomarker strand.
 
-# Wuhan-Hu-1 isolated coronavirus 2 complete genome sequences have been downloaded from link below and saved in the project folder ./virus_genome
+### Wuhan-Hu-1 isolated coronavirus 2 complete genome sequences have been downloaded from link below and saved in the project folder ./virus_genome
 
 https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3?report=fasta
 
-# The Human Immunodeficiency Viruses (HIV) complete genome sequence has been downloaded from link below and saved in the project folder ./virus_genome
+### The Human Immunodeficiency Viruses (HIV) complete genome sequence has been downloaded from link below and saved in the project folder ./virus_genome
 
 https://www.ncbi.nlm.nih.gov/nuccore/NC_001722.1?report=fasta
 
