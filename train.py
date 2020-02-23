@@ -65,32 +65,26 @@ if __name__ == '__main__':
             img1, img2, label = Variable(img1.cuda()), Variable(img2.cuda()), Variable(label.cuda())
         else:
             img1, img2, label = Variable(img1), Variable(img2), Variable(label)
-
         optimizer.zero_grad()
         output    = net.forward(img1, img2)
         loss      = loss_BCE   (output, label)
         loss_val += loss.item  ()
         loss.backward()
         optimizer.step()
-
         if batch_id % Flags.test_every == 0:
            r, e     = 0, 0
            list_err = []
            for _, (test1, test2, label_test) in enumerate(testLoader, 1):
-
               if Flags.cuda:
                  test1, test2 = test1.cuda(), test2.cuda()
               else:
                  test1, test2 = Variable(test1), Variable(test2)
-              
               output = net.forward(test1, test2).data.cpu().numpy()
               pred   = np.argmax(output)
-
               if pred ==1:
                    r += 1
               else:
                    e += 1
-
               list_err.append(r*1.0/(r+e))
 
 
