@@ -1,5 +1,4 @@
-# AI against COVID-2019
-
+# Artificial Intelligence model for analysis of COVID-2019
 
 ## Purpose 
 
@@ -74,10 +73,3 @@ python main.py
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
 This [license](./LICENSE.md) applies to all published OONI data.
-
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
