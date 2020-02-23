@@ -71,7 +71,10 @@ python main.py
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+This [license](./LICENSE.md) applies to all published OONI data.
+
 
 ## Acknowledgments
 
