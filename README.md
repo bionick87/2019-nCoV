@@ -1,4 +1,4 @@
-# Artificial Intelligence model for analysis of COVID-2019
+# Artificial Intelligence model for the analysis of  COVID-2019
 
 ## Purpose 
 
