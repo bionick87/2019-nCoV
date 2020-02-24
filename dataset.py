@@ -9,7 +9,8 @@ import torchvision.datasets as dset
 from   PIL import Image
 from   torchvision import transforms
 import cv2
-from PIL import Image
+from   PIL import Image
+
 
 class Dataset(Dataset):
     def __init__(self, dataPathTrain,\
@@ -20,6 +21,8 @@ class Dataset(Dataset):
         np.random.seed(0)
         self.transform = transforms.Compose([
         transforms.RandomAffine(15),
+        transforms.ToTensor()])
+        self.transform_v = transforms.Compose([
         transforms.ToTensor()])
         #######################
         self.negTrain,\
@@ -58,13 +61,13 @@ class Dataset(Dataset):
         elif self.type == "valid":
               index_neg = random.randint(0, len(self.negValid)-1) 
               index_pos = random.randint(0, len(self.posValid)-1)
-              neg_data  = self.transform(Image.open(os.path.join(self.dataPathTrain,"negative",self.negValid[index_neg])))
-              pos_data  = self.transform(Image.open(os.path.join(self.dataPathTrain,"positive",self.posValid[index_pos])))
+              neg_data  = self.transform_v(Image.open(os.path.join(self.dataPathTrain,"negative",self.negValid[index_neg])))
+              pos_data  = self.transform_v(Image.open(os.path.join(self.dataPathTrain,"positive",self.posValid[index_pos])))
         elif self.type == "test":
               index_neg = random.randint(0, len(self.negTest)-1) 
               index_pos = random.randint(0, len(self.posTest)-1)
-              neg_data  = self.transform(Image.open(os.path.join(self.dataPathTrain,"negative",self.negTest[index_neg])))
-              pos_data  = self.transform(Image.open(os.path.join(self.dataPathTrain,"positive",self.posTest[index_pos])))
+              neg_data  = self.transform_v(Image.open(os.path.join(self.dataPathTrain,"negative",self.negTest[index_neg])))
+              pos_data  = self.transform_v(Image.open(os.path.join(self.dataPathTrain,"positive",self.posTest[index_pos])))
         
         if  self.type == "train":
               random_select = random.randint(0, 1)
@@ -77,7 +80,9 @@ class Dataset(Dataset):
                  image2 = neg_data
                  label  = torch.from_numpy(np.array([1], dtype=np.float32))
         else:
-             
+                 image1 = pos_data
+                 image2 = neg_data
+
 
         return image1, image2, label
 
