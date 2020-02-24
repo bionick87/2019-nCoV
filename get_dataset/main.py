@@ -1,8 +1,8 @@
 #https://stackoverflow.com/questions/17856242/convert-string-to-image-in-python
-from textwrap import wrap
+from   textwrap import wrap
 import text_to_image
 import os
-from tqdm import tqdm
+from   tqdm import tqdm
 import cv2
 from   sklearn.model_selection import train_test_split
 

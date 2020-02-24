@@ -1,4 +1,4 @@
-# Artificial Intelligence model for the analysis of COVID-2019 
+# Artificial Intelligence model for COVID-2019 analysis 
 
 ## Purpose 
 
@@ -7,7 +7,6 @@ Deep learning application idea to track COVID-2019 virus evolution by analyzing 
 The system is still under development and does not currently guarantee any immediate application. 
 
 This was done as the purpose of creating an interface between the COVID-2019 sequences currently available and deep learning to guarantee future applications in this direction and speed up the creation of a vaccine.
-
 
 The network is based on a deep Siamese Neural Network (https://en.wikipedia.org/wiki/Siamese_neural_network) that takes a strand of RAN COVID-2019 sequences as input - taken at different time points instants.
 
@@ -39,7 +38,7 @@ The code is released for research purposes only and not for commercial purposes.
 
 * Generation of the dataset (COVID-2019 vs HIV) - go to ./get_dataset folder then open main file change the paths of the HIV and COVID-2019 sequences and the folder where to save the dataset.
 
-* I used two AlexNet networks pretrained on imagenet (http://www.image-net.org/). The network converges quickly and then overfits for greater epochs (i.e. probably due to the limited number of data used) - for training just python train.py - you don't need a GPU as I chose a very shallow network that can allow you to train the model quickly. Here a first validation chart on 400 total interactions.
+* I used two AlexNet networks pretrained on imagenet (http://www.image-net.org/). The network converges quickly and then overfits for greater epochs (i.e. probably due to the limited number of data used) - for training just python train.py - you don't need a GPU as I chose a very shallow network that can allow you to train the model quickly. Here a first validation chart on 400 total iterations.
 
 ![alt text](img/valid.jpg)
 
@@ -48,7 +47,6 @@ The code is released for research purposes only and not for commercial purposes.
 
 * Test with different length of RNA sequences
 * Build an inference system to analyze strands RNA length between two different coranaviruses sequence.
-
 
 
 ### Prerequisites
@@ -74,6 +72,8 @@ pip install torchvision
 pip install opencv-python
 pip install matplotlib
 pip install tqdm
+pip install textwrap3
+pip install python-gflags
 ```
 
 
