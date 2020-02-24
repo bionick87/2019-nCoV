@@ -76,18 +76,23 @@ pip install textwrap3
 pip install python-gflags
 ```
 
-
 ### Installing
 
-To start the code: 
+To start the training code: 
+
+Please remember to change the path of where the dataset is located and where you want to save inside the train.py file
+
 
 ```
-python main.py
+python train.py
 ```
 
 ## Authors
 
 * ** Nicolò Savioli, PhD ** - *Initial work* 
+
+Please if you find this code useful for all your research activities, cite it.
+
 
 ## License
 
