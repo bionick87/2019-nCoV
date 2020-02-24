@@ -60,17 +60,17 @@ if __name__ == "__main__":
     makeFolder(test_path)
     ############################## 
     save_path_file_nCoV_train = os.path.join(train_path,"positive")
-    save_path_file_HIV_train  = os.path.join(train_path,"negtive")
+    save_path_file_HIV_train  = os.path.join(train_path,"negative")
     makeFolder(save_path_file_nCoV_train)
     makeFolder(save_path_file_HIV_train)
     ##############################
     save_path_file_nCoV_valid = os.path.join(valid_path,"positive")
-    save_path_file_HIV_valid  = os.path.join(valid_path,"negtive")
+    save_path_file_HIV_valid  = os.path.join(valid_path,"negative")
     makeFolder(save_path_file_nCoV_valid)
     makeFolder(save_path_file_HIV_valid)
     ##############################
     save_path_file_nCoV_test = os.path.join(test_path,"positive")
-    save_path_file_HIV_test  = os.path.join(test_path,"negtive")
+    save_path_file_HIV_test  = os.path.join(test_path,"negative")
     makeFolder(save_path_file_nCoV_test)
     makeFolder(save_path_file_HIV_test)
     ##############################

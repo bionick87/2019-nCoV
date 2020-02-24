@@ -82,8 +82,6 @@ class Dataset(Dataset):
         else:
                  image1 = pos_data
                  image2 = neg_data
-
-
         return image1, image2, label
 
 

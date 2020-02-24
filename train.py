@@ -15,24 +15,26 @@ import sys
 from   collections      import deque
 import os
 from   tqdm import tqdm
-
+from utils import *
 
 if __name__ == '__main__':
 
     Flags = gflags.FLAGS
     gflags.DEFINE_bool("cuda", False, "use cuda")
     ############################################
-    gflags.DEFINE_string("train_path", "/Users/nicolosavioli/Desktop/dataset", "training folder")
-    gflags.DEFINE_string("test_path", "/Users/nicolosavioli/Desktop/dataset", 'path of testing folder')
-    gflags.DEFINE_string("valid_path", "/Users/nicolosavioli/Desktop/dataset", 'path of testing folder')
+    gflags.DEFINE_string("train_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/train", "training folder")
+    gflags.DEFINE_string("test_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/test", 'path of testing folder')
+    gflags.DEFINE_string("valid_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/valid", 'path of testing folder')
+    ############################################
+    gflags.DEFINE_string("save_folder", "/Users/nicolosavioli/Desktop", 'path of testing folder')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
-    gflags.DEFINE_integer("batch_size", 3, "number of batch size")
-    gflags.DEFINE_float  ("lr", 0.01, "learning rate")
-    gflags.DEFINE_integer("save_every", 100, "save model after each save_every iter.")
-    gflags.DEFINE_integer("test_every", 4, "test model after each test_every iter.")
-    gflags.DEFINE_integer("max_iter", 100, "number of iterations before stopping")
-    gflags.DEFINE_string("model_path", "/home/data/pin/model/siamese", "path to store model")
+    gflags.DEFINE_integer("batch_size", 10, "number of batch size")
+    gflags.DEFINE_float  ("lr", 0.001, "learning rate")
+    gflags.DEFINE_integer("valid_every", 1, "valid model after each test_every iter.")
+    gflags.DEFINE_integer("max_iter", 40, "number of iteration - n epoch are max_iter/batch_size")
+    
+
     gflags.DEFINE_string("gpu_ids", "0", "gpu ids used to train")
     Flags(sys.argv)
 
@@ -45,6 +47,10 @@ if __name__ == '__main__':
     loss_BCE    = torch.nn.BCEWithLogitsLoss(size_average=True)
     net         = SiameseNet()
 
+    save_path   = os.path.join(Flags.save_folder,"save_data")
+    makeFolder(save_path)
+    makeFolder(os.path.join(save_path,"models"))
+
     # multi gpu
     if Flags.cuda:
         os.environ["CUDA_VISIBLE_DEVICES"] = Flags.gpu_ids
@@ -53,12 +59,10 @@ if __name__ == '__main__':
         net.cuda()
     optimizer = torch.optim.Adam(net.parameters(),lr = Flags.lr )
     optimizer.zero_grad()
-    #####################
-    train_loss = []
     loss_val   = 0
-    #####################
-    print("\n ...Train")
+    valid_list = []
     for batch_id, (img1, img2, label) in tqdm(enumerate(trainLoader, 1)):
+        print("\n ...Train at epoch " +str(batch_id))
         net.train()
         if batch_id > Flags.max_iter:
             break      
@@ -72,25 +76,26 @@ if __name__ == '__main__':
         loss_val += loss.item  ()
         loss.backward()
         optimizer.step()
-
-        if batch_id % Flags.test_every == 0:
-           net.eval()
-           list_err = []
-           print("\n ...Valid")
-           r, e     = 0, 0
-           for _, (valid1, valid2, label_valid) in enumerate(validLoader, 1):
+        if batch_id % Flags.valid_every == 0:
+            net.eval()
+            list_err = []
+            print("\n ...Valid")
+            r, e     = 0, 0
+            for _, (valid1, valid2, label_valid) in tqdm(enumerate(validLoader, 1)):
               if Flags.cuda:
                  test1, test2 = valid1.cuda(), valid2.cuda()
               else:
                  test1, test2 = Variable(valid1), Variable(valid2)
-              output = net.forward(valid1, valid2).data.cpu().numpy()
+              output = net.forward(test1, test2).data.cpu().numpy()
               pred   = np.argmax(output)
               if pred ==1:
                    r += 1
               else:
                    e += 1
               list_err.append(r*1.0/(r+e))
-           print(np.mean(list_err))
+            valid_list.append(np.mean(list_err))
+            plot(valid_list,save_path)
+
 
 
 
