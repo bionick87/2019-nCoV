@@ -2,9 +2,9 @@
 
 ## Purpose 
 
-Deep learning application to track COVID-2019 virus evolution by analyzing the RNA sequence between two COVID-2019 samples at different time points.
+Deep learning application to track COVID-2019 virus evolution by analyzing the RNA sequence between two COVID-2019 samples at different time points (i.e for example December COVID-2019  and the current one).
 
-The network is based on a deep Siamese Neural Network (https://en.wikipedia.org/wiki/Siamese_neural_network) that takes a strand of COVID-2019 sequences as input.
+The network is based on a deep Siamese Neural Network (https://en.wikipedia.org/wiki/Siamese_neural_network) that takes a strand of RAN COVID-2019 sequences as input - taken at different instants of time points.
 
 More specifically, each strand is converted into a grayscale image of 256x256 pixels size and passed through two  convolutions AlexNet (https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) Convolutional Networks (CNN). However, both CNN are trained towards negative examples with Human Immunodeficiency Viruses (HIV) strand examples (i.e how it is a biologically different virus).
 
