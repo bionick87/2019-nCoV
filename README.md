@@ -4,14 +4,15 @@
 
 Deep learning application to track COVID-2019 virus evolution by analyzing the RNA sequence between two COVID-2019 samples at different time points (i.e for example December COVID-2019  and the current one).
 
-The network is based on a deep Siamese Neural Network (https://en.wikipedia.org/wiki/Siamese_neural_network) that takes a strand of RAN COVID-2019 sequences as input - taken at different instants of time points.
+The network is based on a deep Siamese Neural Network (https://en.wikipedia.org/wiki/Siamese_neural_network) that takes a strand of RAN COVID-2019 sequences as input - taken at different time points instants.
 
-More specifically, each strand is converted into a grayscale image of 256x256 pixels size and passed through two  convolutions AlexNet (https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) Convolutional Networks (CNN). However, both CNN are trained towards negative examples with Human Immunodeficiency Viruses (HIV) strand examples (i.e how it is a biologically different virus).
+More specifically, each strand is converted into a grayscale image of 256x256 pixels size and passed through two   AlexNet (https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) Convolutional Networks (CNN). However, both CNN are trained towards negative examples with Human Immunodeficiency Viruses (HIV) strand examples (i.e how it is a biologically different virus).
 
 The aim is to find nucleotide sequences that stably characterizes COVID-2019 for finding a specific RNA biomarker strand.
-In particular, it might be useful to compare the variation over time of thex the densely glycosylated spike (Sprotein sequences which coronavirus uses to enter in the host cell (https://science.sciencemag.org/content/early/2020/02/19/science.abb2507/tab-pdf).
+In particular, it might be useful to compare the variation over time of the densely glycosylated spike (S) protein sequences which coronavirus uses to enter in the host cell (https://science.sciencemag.org/content/early/2020/02/19/science.abb2507/tab-pdf).
 
-This work is in progress and since I do it in my spare time - I will give new constant updates to the code.
+This work is in progress and since I do it in my spare time.
+
 However, understanding the urgency of the phenomenon, I decided to make the code available to give new analysis tools to the international scientific community. This code can only be used for scientific purposes.
 
 
@@ -34,12 +35,7 @@ The code is released for research purposes only and not for commercial purposes.
 * Generation of the dataset (COVID-2019 vs HIV) - go to ./get_dataset folder then open main file change the paths of the HIV and COVID-2019 sequences and the folder where to save the dataset.
 
 
-
 ## TODO
-
-
-
-
 
 
 
