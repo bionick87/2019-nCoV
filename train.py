@@ -35,7 +35,7 @@ if __name__ == '__main__':
     gflags.DEFINE_float  ("lr", 1e-4, "learning rate")
 
     ############################################
-    gflags.DEFINE_integer("valid_every", 10, "valid model after each test_every iter.")
+    gflags.DEFINE_integer("valid_every", 1, "valid model after each test_every iter.")
     gflags.DEFINE_integer("save_every",  500, "save model after each test_every iter.")
     ############################################
     
