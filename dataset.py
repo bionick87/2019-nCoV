@@ -21,7 +21,7 @@ class Dataset(Dataset):
         np.random.seed(0)
         self.transform = transforms.Compose([
         transforms.RandomAffine(30),
-        transforms.RandomHorizontalFlip()
+        transforms.RandomHorizontalFlip(),
         transforms.ToTensor()])
         self.transform_v = transforms.Compose([
         transforms.ToTensor()])
