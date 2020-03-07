@@ -47,6 +47,9 @@ This is also useful for the creation of an RNA idetification system for specific
 
 ### Sensitivity plot 
 ![alt text](img/valid.jpg)
+
+### Training MSE plot
+
 ![alt text](img/train.jpg)
 
 
