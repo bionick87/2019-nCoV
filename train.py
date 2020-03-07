@@ -100,6 +100,7 @@ if __name__ == '__main__':
                        y_hat.append(1)
                     else:
                        y_hat.append(0)
+            
             TP, FP, TN, FN = measure(y_actual, y_hat)
             sensitivity    = 100*(TP/(TP+FN))
             sensitivity_list.append(sensitivity)
