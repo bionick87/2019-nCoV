@@ -82,7 +82,6 @@ if __name__ == '__main__':
                 img1, img2, label = Variable(img1), Variable(img2), Variable(label)
             optimizer.zero_grad()
             output    = net.forward(img1, img2)
-            print(output)
             loss      = loss_MSE       (output, label)
             loss_val += loss.item  ()
             optimizer.zero_grad()
@@ -110,9 +109,9 @@ if __name__ == '__main__':
                 y_hat    = []
                 for i in range(output_net.size()[0]):
                     output_net_np = output_net[i].data.cpu().numpy()
-                    pred          = np.argmax(output_net_np)
-                    y_actual.append(pred_gt)
-                    if pred == pred_gt:
+                    y_actual.append(output_net_np)
+                    print(output_net_np)
+                    if output_net_np == pred_gt:
                        y_hat.append(1)
                     else:
                        y_hat.append(0)
