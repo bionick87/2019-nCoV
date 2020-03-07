@@ -17,6 +17,7 @@ import os
 from   tqdm import tqdm
 from utils import *
 import random
+import math
 
 
 if __name__ == '__main__':
@@ -100,19 +101,13 @@ if __name__ == '__main__':
                     test1, test2  = valid1.cuda(), valid2.cuda()
                 else:
                      test1, test2 = Variable(valid1), Variable(valid2)
-                pred_gt = random.randint(0, 1)
-                if pred_gt == 1:
-                    output_net    = net.forward(test1, test2)
-                else:
-                    output_net    = net.forward(test1, test1)
+                output_net    = net.forward(test1, test2)
                 y_actual = []
                 y_hat    = []
                 for i in range(output_net.size()[0]):
-                    output_net_np = output_net[i].data.cpu().numpy()
-                    y_actual.append(output_net_np)
-                    print(output_net_np)
-                    if output_net_np == float(pred_gt):
-                       print("BUM")
+                    output_net_np = math.ceil(output_net[i].data.cpu().numpy())
+                    y_actual.append(1)
+                    if output_net_np == 1.0:
                        y_hat.append(1)
                     else:
                        y_hat.append(0)
