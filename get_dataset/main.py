@@ -39,7 +39,7 @@ if __name__ == "__main__":
     # Dataset folder path 
     path_dataset_fodler = "/Users/nicolosavioli/Desktop/nCoV_dataset"
     # Number of RNA vrius strands
-    nstrands            = 20
+    nstrands            = 6
     ##############################
     nCoV_train,\
     nCoV_test,\
