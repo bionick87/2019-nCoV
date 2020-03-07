@@ -10,7 +10,7 @@ This was done as the purpose of creating an interface between the COVID-2019 seq
 
 The network is based on a deep Siamese Neural Network (https://en.wikipedia.org/wiki/Siamese_neural_network) that takes a strand of RAN COVID-2019 sequences as input - taken at different time points instants.
 
-More specifically, each strand is converted into a grayscale image of 256x256 pixels size and passed through two   AlexNet (https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) Convolutional Networks (CNN). However, both CNN are trained towards negative examples with Human Immunodeficiency Viruses (HIV) strand examples (i.e how it is a biologically different virus).
+More specifically, each strand is converted into a grayscale image of 256x256 pixels size and passed through two AlexNet (https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) Convolutional Networks (CNN). However, both CNN are trained towards negative examples with Human Immunodeficiency Viruses (HIV) strand examples (i.e how it is a biologically different virus).
 
 The aim is to find nucleotide sequences that stably characterizes COVID-2019 for finding a specific RNA biomarker strand.
 In particular, it might be useful to compare the variation over time of the densely glycosylated spike (S) protein sequences which coronavirus uses to enter in the host cell (https://science.sciencemag.org/content/early/2020/02/19/science.abb2507/tab-pdf).
@@ -34,14 +34,41 @@ The code is released for research purposes only and not for commercial purposes.
 ![alt text](img/img.jpg)
 
 
+
+## RESULTS
+
+In the first phase, the Siamese Neural Network system was trained against strands of RAN derived from the HIV virus which presents biological diversity compared to COVID-2019.
+As you can see from the graph, the system is able to identify the difference between a RNA strands of coronavirus from HIV with a specificity that is around 70% (i.e. probably with deeper networks the system has greater accuracy). 
+
+In particular, I want to look for similarities between spike proteins
+of HIV-1 and those of 2019-nCoV, where in a recent article "Uncanny similarity of unique inserts in the 2019-nCoV spike protein to HIV-1 gp120 and Gag" is underlined their structural similarity of amino acid residues with the HIV-1 (https://www.biorxiv.org/content/10.1101/2020.01.30.927871v1.full.pdf).
+
+This is also useful for the creation of an RNA idetification system for specific sequences who presented mutations during the epidemic evolution of the 2019-nCoV virus.
+
+strand of RAN
+![alt text](img/valid.jpg)
+![alt text](img/train.jpg)
+
+
+The system input turns out to be a sequence of 12 RNA bases (i.e. that code for 4 amino acids). Each RNA string is converted into an image to give input to the convolutional network. 
+
+Below an example of a 12 RNA sequence of coronavirus and an HIV-1 one converting to 256x256 pixels images.
+
+
+![alt text](img/RNA.jpg)
+
+
 ## USE
 
 * Generation of the dataset (COVID-2019 vs HIV) - go to ./get_dataset folder then open main file change the paths of the HIV and COVID-2019 sequences and the folder where to save the dataset.
 
-* I used two AlexNet networks pretrained on imagenet (http://www.image-net.org/). The network converges quickly and then overfits for greater epochs (i.e. probably due to the limited number of data used) - for training just python train.py - you don't need a GPU as I chose a very shallow network that can allow you to train the model quickly. Here a first validation chart on 400 total iterations.
+* I used two AlexNet networks pretrained on imagenet (http://www.image-net.org/).   
 
-![alt text](img/valid.jpg)
+```
+sh run.sh
+```
 
+For running the training
 
 ## TODO
 

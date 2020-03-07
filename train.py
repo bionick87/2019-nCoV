@@ -25,11 +25,11 @@ if __name__ == '__main__':
     Flags = gflags.FLAGS
     gflags.DEFINE_bool   ("cuda", True, "use cuda")
     ############################################
-    gflags.DEFINE_string ("train_path", "/vol/biomedic2/ns87/conv-19/train", "training folder")
-    gflags.DEFINE_string ("test_path", "/vol/biomedic2/ns87/conv-19/test",   "path of testing folder")
-    gflags.DEFINE_string ("valid_path", "/vol/biomedic2/ns87/conv-19/valid", "path of testing folder")
+    gflags.DEFINE_string ("train_path", "dataset/train", "training folder to be set")
+    gflags.DEFINE_string ("test_path", "dataset/test",   "path of testing folder to be set")
+    gflags.DEFINE_string ("valid_path", "dataset/valid", "path of testing folder to be set")
     ############################################
-    gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save", 'path of testing folder')
+    gflags.DEFINE_string ("save_folder", "save-folder-path", 'path of testing folder to be set!')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
@@ -39,7 +39,6 @@ if __name__ == '__main__':
     gflags.DEFINE_integer("valid_every", 200, "valid model after each test_every iter.")
     gflags.DEFINE_integer("save_every",  500, "save model after each test_every iter.")
     ############################################
-    
     gflags.DEFINE_integer("max_iter_train", 500, "number of iteration for the training stage")
     gflags.DEFINE_integer("max_iter_valid", 200, "number of iteration for the valid stage")
     gflags.DEFINE_integer("nepochs", 2000, "number of epoch")
