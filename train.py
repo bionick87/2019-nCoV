@@ -110,8 +110,9 @@ if __name__ == '__main__':
                 for i in range(output_net.size()[0]):
                     output_net_np = output_net[i].data.cpu().numpy()
                     y_actual.append(output_net_np)
+                    print(output_net_np)
                     if output_net_np == float(pred_gt):
-                       print("ORCO DIO!")
+                       print("BUM")
                        y_hat.append(1)
                     else:
                        y_hat.append(0)
