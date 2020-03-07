@@ -115,7 +115,7 @@ if __name__ == '__main__':
                 if TP == 0 or FN == 0:
                    sensitivity  = 0
                 else:                    
-                    sensitivity = TP/(TP+FN)
+                    sensitivity = 100*(TP/(TP+FN))
                 sensitivity_valid.append(sensitivity)
             sensitivity_list.append(np.mean(sensitivity_valid))
             plot_sensitivity(sensitivity_list,save_path)
