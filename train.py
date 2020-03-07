@@ -31,17 +31,17 @@ if __name__ == '__main__':
     gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save", 'path of testing folder')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
-    gflags.DEFINE_integer("batch_size", 300, "number of batch size")
-    gflags.DEFINE_float  ("lr", 1e-3, "learning rate")
+    gflags.DEFINE_integer("batch_size", 10, "number of batch size")
+    gflags.DEFINE_float  ("lr", 1e-4, "learning rate")
 
     ############################################
     gflags.DEFINE_integer("valid_every", 10, "valid model after each test_every iter.")
     gflags.DEFINE_integer("save_every",  500, "save model after each test_every iter.")
     ############################################
     
-    gflags.DEFINE_integer("max_iter_train", 5000000, "number of iteration for the training stage")
-    gflags.DEFINE_integer("max_iter_valid", 5000000, "number of iteration for the valid stage")
-    gflags.DEFINE_integer("nepochs", 5000, "number of epoch")
+    gflags.DEFINE_integer("max_iter_train", 500, "number of iteration for the training stage")
+    gflags.DEFINE_integer("max_iter_valid", 200, "number of iteration for the valid stage")
+    gflags.DEFINE_integer("nepochs", 1000, "number of epoch")
     gflags.DEFINE_string ("gpu_ids", "0", "gpu ids used to train")
     Flags(sys.argv)
     #############################################
@@ -119,7 +119,7 @@ if __name__ == '__main__':
                 if TP == 0 or FN == 0:
                    sensitivity  = 0
                 else:                    
-                    sensitivity = 100*(TP/(TP+FN))
+                    sensitivity = TP/(TP+FN)
                 sensitivity_valid.append(sensitivity)
             sensitivity_list.append(np.mean(sensitivity_valid))
             plot_sensitivity(sensitivity_list,save_path)

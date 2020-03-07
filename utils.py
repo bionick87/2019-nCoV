@@ -34,7 +34,7 @@ def plot_sensitivity(list_valid,pathSave):
     # txt write
     ax.set_title   ("Sensitivity plot on validset")
     ax.plot        (list_valid, '-',  label="Sensitivity",color='r')
-    ax.set_ylabel  ('Sensitivity (%)')
+    ax.set_ylabel  ('Sensitivity')
     ax.set_xlabel  ("Epochs")
     ax.legend      (loc='lower right')
     handles, labels = plt.gca().get_legend_handles_labels()
