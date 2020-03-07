@@ -33,13 +33,17 @@ if __name__ == '__main__':
     gflags.DEFINE_integer("valid_every", 1, "valid model after each test_every iter.")
     gflags.DEFINE_integer("max_iter_train", 40, "number of iteration for the training stage")
     gflags.DEFINE_integer("max_iter_valid", 40, "number of iteration for the valid stage")
+    gflags.DEFINE_integer("max_iter_save", 2, "number of iteration before saving model")
     gflags.DEFINE_integer("nepochs", 100, "number of epoch")
     gflags.DEFINE_string("gpu_ids", "0", "gpu ids used to train")
     Flags(sys.argv)
+    #############################################
     trainSet    = Dataset(Flags.train_path,Flags.test_path,Flags.valid_path,Flags.max_iter_train,"train")
     trainLoader = DataLoader(trainSet, batch_size=Flags.batch_size, shuffle=False, num_workers=Flags.workers)
+    #############################################
     validSet    = Dataset(Flags.valid_path,Flags.test_path,Flags.valid_path,Flags.max_iter_valid,"valid")
     validLoader = DataLoader(validSet, batch_size=Flags.batch_size, shuffle=False, num_workers=Flags.workers)
+    #############################################
     loss_BCE    = torch.nn.BCEWithLogitsLoss(size_average=True)
     net         = SiameseNet()
     save_path   = os.path.join(Flags.save_folder,"save_data")
@@ -94,8 +98,10 @@ if __name__ == '__main__':
             sensitivity    = TP/(TP+FN)
             sensitivity_list.append(sensitivity)
             plot(sensitivity_list,save_path)
-            torch.save(net.state_dict(),os.path.join(model_path,"model_"+str(epoch_valid)+'.pt'))
-            epoch_valid   += 1
+            if epoch % Flags.max_iter_save == 0:
+                print("\n ...Save model")
+                torch.save(net.state_dict(),os.path.join(model_path,"model_"+str(epoch_valid)+'.pt'))
+                epoch_valid   += 1
 
 
 
