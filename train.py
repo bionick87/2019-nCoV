@@ -82,6 +82,7 @@ if __name__ == '__main__':
                 img1, img2, label = Variable(img1), Variable(img2), Variable(label)
             optimizer.zero_grad()
             output    = net.forward(img1, img2)
+            print(output)
             loss      = loss_MSE       (output, label)
             loss_val += loss.item  ()
             optimizer.zero_grad()
