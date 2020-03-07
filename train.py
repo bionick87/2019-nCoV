@@ -95,11 +95,12 @@ if __name__ == '__main__':
                 for i in range(output_net.size()[0]):
                     output_net_np = output_net[i].data.cpu().numpy()
                     pred          = np.argmax(output_net_np)
-                    print(pred)
                     y_actual.append(1)
                     if pred ==1:
+                       print("DIO CANE")
                        y_hat.append(1)
                     else:
+                       print("DIO PORCO")
                        y_hat.append(0)
             TP, FP, TN, FN = measure(y_actual, y_hat)
             sensitivity    = TP/(TP+FN)
