@@ -33,14 +33,14 @@ def getData(nstrandsList,pathSave):
         cont += 1
 
 if __name__ == "__main__":
-    
+
     # https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3?report=fasta
     path_file_nCoV      = "/homes/nsavioli/Desktop/2019-nCoV/virus_genome/2019-nCoV.txt"
     path_file_HIV       = "/homes/nsavioli/Desktop/2019-nCoV/virus_genome/HIV.txt"
     # Dataset folder path 
     path_dataset_fodler = "/vol/biomedic2/ns87/conv-19"
     # Number of RNA vrius strands
-    nstrands            = 6
+    nstrands            = 63
     ##############################
     nCoV_train,\
     nCoV_test,\
