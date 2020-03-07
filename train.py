@@ -28,14 +28,14 @@ if __name__ == '__main__':
     gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save", 'path of testing folder')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
-    gflags.DEFINE_integer("batch_size", 10, "number of batch size")
+    gflags.DEFINE_integer("batch_size", 200, "number of batch size")
     gflags.DEFINE_float  ("lr", 1e-3, "learning rate")
     ############################################
     gflags.DEFINE_integer("valid_every", 1, "valid model after each test_every iter.")
     gflags.DEFINE_integer("save_every",  50, "save model after each test_every iter.")
     ############################################
-    gflags.DEFINE_integer("max_iter_train", 200, "number of iteration for the training stage")
-    gflags.DEFINE_integer("max_iter_valid", 90, "number of iteration for the valid stage")
+    gflags.DEFINE_integer("max_iter_train", 50000, "number of iteration for the training stage")
+    gflags.DEFINE_integer("max_iter_valid", 200, "number of iteration for the valid stage")
     gflags.DEFINE_integer("nepochs", 1000, "number of epoch")
     gflags.DEFINE_string ("gpu_ids", "0", "gpu ids used to train")
     Flags(sys.argv)

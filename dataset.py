@@ -20,7 +20,8 @@ class Dataset(Dataset):
         super(Dataset, self).__init__()
         np.random.seed(0)
         self.transform = transforms.Compose([
-        transforms.RandomAffine(15),
+        transforms.RandomAffine(30),
+        transforms.RandomHorizontalFlip()
         transforms.ToTensor()])
         self.transform_v = transforms.Compose([
         transforms.ToTensor()])
