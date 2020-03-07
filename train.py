@@ -21,9 +21,9 @@ if __name__ == '__main__':
     Flags = gflags.FLAGS
     gflags.DEFINE_bool   ("cuda", False, "use cuda")
     ############################################
-    gflags.DEFINE_string ("train_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/train", "training folder")
-    gflags.DEFINE_string ("test_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/test", 'path of testing folder')
-    gflags.DEFINE_string ("valid_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/valid", 'path of testing folder')
+    gflags.DEFINE_string ("train_path", "/vol/biomedic2/ns87/conv-19/train", "training folder")
+    gflags.DEFINE_string ("test_path", "/vol/biomedic2/ns87/conv-19/test", 'path of testing folder')
+    gflags.DEFINE_string ("valid_path", "/vol/biomedic2/ns87/conv-19/valid", 'path of testing folder')
     ############################################
     gflags.DEFINE_string ("save_folder", "/Users/nicolosavioli/Desktop", 'path of testing folder')
     ############################################
