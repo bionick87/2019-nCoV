@@ -10,7 +10,6 @@ class SiameseNet(nn.Module):
         self.alex_net = models.alexnet(pretrained=True).features
         self.liner    = nn.Sequential(nn.Linear(12544, 4096), nn.Sigmoid())
         self.out      = nn.Linear(4096, 1)
-        self.sigmoid  = nn.Sigmoid()
 
     def cnn(self, x):
         x = self.alex_net(x)

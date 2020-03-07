@@ -23,22 +23,22 @@ if __name__ == '__main__':
     Flags = gflags.FLAGS
     gflags.DEFINE_bool   ("cuda", False, "use cuda")
     ############################################
-    gflags.DEFINE_string ("train_path", "/Users/nicolosavioli/Desktop/dataset/train", "training folder")
-    gflags.DEFINE_string ("test_path", "/Users/nicolosavioli/Desktop/dataset/test",   "path of testing folder")
-    gflags.DEFINE_string ("valid_path", "/Users/nicolosavioli/Desktop/dataset/valid", "path of testing folder")
+    gflags.DEFINE_string ("train_path", "/vol/biomedic2/ns87/conv-19/train", "training folder")
+    gflags.DEFINE_string ("test_path", "/vol/biomedic2/ns87/conv-19/test",   "path of testing folder")
+    gflags.DEFINE_string ("valid_path", "/vol/biomedic2/ns87/conv-19/valid", "path of testing folder")
     ############################################
-    gflags.DEFINE_string ("save_folder", "/Users/nicolosavioli/Desktop/dave-data", 'path of testing folder')
+    gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save", 'path of testing folder')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
     gflags.DEFINE_float  ("lr", 1e-3, "learning rate")
     ############################################
-    gflags.DEFINE_integer("valid_every", 1, "valid model after each test_every iter.")
+    gflags.DEFINE_integer("valid_every", 10, "valid model after each test_every iter.")
     gflags.DEFINE_integer("save_every",  500, "save model after each test_every iter.")
     ############################################
-    gflags.DEFINE_integer("max_iter_train", 50, "number of iteration for the training stage")
-    gflags.DEFINE_integer("max_iter_valid", 50, "number of iteration for the valid stage")
-    gflags.DEFINE_integer("nepochs", 1000, "number of epoch")
+    gflags.DEFINE_integer("max_iter_train", 500, "number of iteration for the training stage")
+    gflags.DEFINE_integer("max_iter_valid", 170, "number of iteration for the valid stage")
+    gflags.DEFINE_integer("nepochs", 5000, "number of epoch")
     gflags.DEFINE_string ("gpu_ids", "0", "gpu ids used to train")
     Flags(sys.argv)
     #############################################
@@ -90,7 +90,6 @@ if __name__ == '__main__':
         plot_loss(loss_list,save_path)
         if epoch % Flags.valid_every == 0:
             net.eval()
-            list_err = []
             print("\n ...Valid")
             sensitivity_valid = []
             for _, (valid1, valid2, label_valid) in tqdm(enumerate(validLoader, 1)):
@@ -107,7 +106,6 @@ if __name__ == '__main__':
                 y_hat    = []
                 for i in range(output_net.size()[0]):
                     output_net_np = output_net[i].data.cpu().numpy()
-                    print(output_net_np)
                     pred          = np.argmax(output_net_np)
                     y_actual.append(pred_gt)
                     if pred == pred_gt:
@@ -120,7 +118,6 @@ if __name__ == '__main__':
                 else:                    
                     sensitivity = 100*(TP/(TP+FN))
                 sensitivity_valid.append(sensitivity)
-                print(sensitivity_valid)
             sensitivity_list.append(np.mean(sensitivity_valid))
             plot_sensitivity(sensitivity_list,save_path)
             #if epoch % Flags.save_every == 0:
