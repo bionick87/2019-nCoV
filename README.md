@@ -45,9 +45,7 @@ of HIV-1 and those of 2019-nCoV, where in a recent article "Uncanny similarity o
 
 This is also useful for the creation of an RNA idetification system for specific sequences who presented mutations during the epidemic evolution of the 2019-nCoV virus.
 
-strand of RAN
-![alt text](img/valid.jpg)
-![alt text](img/train.jpg)
+![alt text](img/valid.jpg)(img/train.jpg)
 
 
 The system input turns out to be a sequence of 12 RNA bases (i.e. that code for 4 amino acids). Each RNA string is converted into an image to give input to the convolutional network. 
