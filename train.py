@@ -32,10 +32,10 @@ if __name__ == '__main__':
     gflags.DEFINE_float  ("lr", 1e-3, "learning rate")
     ############################################
     gflags.DEFINE_integer("valid_every", 1, "valid model after each test_every iter.")
-    gflags.DEFINE_integer("save_every",  50, "save model after each test_every iter.")
+    gflags.DEFINE_integer("save_every",  500, "save model after each test_every iter.")
     ############################################
     gflags.DEFINE_integer("max_iter_train", 50000, "number of iteration for the training stage")
-    gflags.DEFINE_integer("max_iter_valid", 200, "number of iteration for the valid stage")
+    gflags.DEFINE_integer("max_iter_valid", 50000, "number of iteration for the valid stage")
     gflags.DEFINE_integer("nepochs", 1000, "number of epoch")
     gflags.DEFINE_string ("gpu_ids", "0", "gpu ids used to train")
     Flags(sys.argv)
@@ -84,14 +84,15 @@ if __name__ == '__main__':
             net.eval()
             list_err = []
             print("\n ...Valid")
-            y_actual = []
-            y_hat    = []
+            sensitivity_valid = []
             for _, (valid1, valid2, label_valid) in tqdm(enumerate(validLoader, 1)):
                 if Flags.cuda:
                     test1, test2  = valid1.cuda(), valid2.cuda()
                 else:
                      test1, test2 = Variable(valid1), Variable(valid2)
                 output_net    = net.forward(test1, test2)
+                y_actual = []
+                y_hat    = []
                 for i in range(output_net.size()[0]):
                     output_net_np = output_net[i].data.cpu().numpy()
                     pred          = np.argmax(output_net_np)
@@ -100,10 +101,10 @@ if __name__ == '__main__':
                        y_hat.append(1)
                     else:
                        y_hat.append(0)
-            
-            TP, FP, TN, FN = measure(y_actual, y_hat)
-            sensitivity    = 100*(TP/(TP+FN))
-            sensitivity_list.append(sensitivity)
+                TP, FP, TN, FN = measure(y_actual, y_hat)
+                sensitivity    = 100*(TP/(TP+FN))
+                sensitivity_valid.append(sensitivity)
+            sensitivity_list.append(np.mean(sensitivity_valid))
             plot(sensitivity_list,save_path)
             if epoch % Flags.save_every == 0:
                 print("\n ...Save model")
