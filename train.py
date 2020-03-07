@@ -48,7 +48,7 @@ if __name__ == '__main__':
     validSet    = Dataset(Flags.valid_path,Flags.test_path,Flags.valid_path,Flags.max_iter_valid,"valid")
     validLoader = DataLoader(validSet, batch_size=Flags.batch_size, shuffle=False, num_workers=Flags.workers)
     #############################################
-    loss_BCE    = torch.nn.BCEWithLogitsLoss(size_average=True)
+    loss_MSE    = torch.nn.MSELoss()
     net         = SiameseNet()
     #############################################
     save_path   = os.path.join(Flags.save_folder,"save_data")
@@ -65,11 +65,12 @@ if __name__ == '__main__':
         net.cuda()
     optimizer        = torch.optim.Adam(net.parameters(),lr = Flags.lr )
     sensitivity_list = []
+    loss_list        = [] 
     for epoch in range(Flags.nepochs):
         epoch_valid = 0 
         loss_val    = 0
-        optimizer.zero_grad()
         print("\n ...Train at epoch " +str(epoch))
+        cont_iter = 0 
         for batch_id, (img1, img2, label) in tqdm(enumerate(trainLoader, 1)):
             net.train()  
             if Flags.cuda:
@@ -78,10 +79,15 @@ if __name__ == '__main__':
                 img1, img2, label = Variable(img1), Variable(img2), Variable(label)
             optimizer.zero_grad()
             output    = net.forward(img1, img2)
-            loss      = loss_BCE   (output, label)
+            loss      = loss_MSE       (output, label)
             loss_val += loss.item  ()
+            optimizer.zero_grad()
             loss.backward()
             optimizer.step()
+            cont_iter += 1 
+        loss_epoch = loss_val/cont_iter
+        loss_list.append(loss_epoch)
+        plot_loss(loss_list,save_path)
         if epoch % Flags.valid_every == 0:
             net.eval()
             list_err = []
@@ -101,6 +107,7 @@ if __name__ == '__main__':
                 y_hat    = []
                 for i in range(output_net.size()[0]):
                     output_net_np = output_net[i].data.cpu().numpy()
+                    print(output_net_np)
                     pred          = np.argmax(output_net_np)
                     y_actual.append(pred_gt)
                     if pred == pred_gt:
@@ -108,14 +115,18 @@ if __name__ == '__main__':
                     else:
                        y_hat.append(0)
                 TP, FP, TN, FN = measure(y_actual, y_hat)
-                sensitivity    = 100*(TP/(TP+FN))
+                if TP == 0 or FN == 0:
+                   sensitivity  = 0
+                else:                    
+                    sensitivity = 100*(TP/(TP+FN))
                 sensitivity_valid.append(sensitivity)
+                print(sensitivity_valid)
             sensitivity_list.append(np.mean(sensitivity_valid))
-            plot(sensitivity_list,save_path)
-            if epoch % Flags.save_every == 0:
-                print("\n ...Save model")
-                torch.save(net.state_dict(),os.path.join(model_path,"model_"+str(epoch_valid)+'.pt'))
-                epoch_valid   += 1
+            plot_sensitivity(sensitivity_list,save_path)
+            #if epoch % Flags.save_every == 0:
+            #    print("\n ...Save model")
+            #    torch.save(net.state_dict(),os.path.join(model_path,"model_"+str(epoch_valid)+'.pt'))
+            #    epoch_valid   += 1
 
 
 

@@ -23,6 +23,6 @@ class SiameseNet(nn.Module):
         cnn2 = self.cnn(x2)
         dis  = torch.abs(cnn1 - cnn2)
         out  = self.out(dis)
-        return self.sigmoid(out)
+        return out
 
 

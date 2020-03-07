@@ -28,7 +28,7 @@ def makeFolder(dirName):
         shutil.rmtree(dirName)
         os.mkdir(dirName)
 
-def plot(list_valid,pathSave):
+def plot_sensitivity(list_valid,pathSave):
     fig            = plt.figure()
     ax             = fig.add_subplot(111)
     # txt write
@@ -41,3 +41,21 @@ def plot(list_valid,pathSave):
     by_label        = OrderedDict(zip(labels, handles))
     plt.legend     (by_label.values(), by_label.keys())
     fig.savefig    (os.path.join  (pathSave, "valid.jpg"))
+
+
+def plot_loss(list_train,pathSave):
+    fig            = plt.figure()
+    ax             = fig.add_subplot(111)
+    # txt write
+    ax.set_title   ("MSE loss plot on trainset")
+    ax.plot        (list_train, '-*',  label="Train loss",color='r')
+    ax.set_ylabel  ('MSE')
+    ax.set_xlabel  ("Epochs")
+    ax.legend      (loc='lower right')
+    handles, labels = plt.gca().get_legend_handles_labels()
+    by_label        = OrderedDict(zip(labels, handles))
+    plt.legend     (by_label.values(), by_label.keys())
+    fig.savefig    (os.path.join  (pathSave, "train.jpg"))
+
+
+
