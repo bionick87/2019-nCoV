@@ -38,14 +38,16 @@ The code is released for research purposes only and not for commercial purposes.
 ## RESULTS
 
 In the first phase, the Siamese Neural Network system was trained against strands of RAN derived from the HIV virus which presents biological diversity compared to COVID-2019.
-As you can see from the graph, the system is able to identify the difference between a RNA strands of coronavirus from HIV with a specificity that is around 70% (i.e. probably with deeper networks the system has greater accuracy). 
+As you can see from the graph, the system is able to identify the difference between a RNA strands of coronavirus from HIV with a sensitivity that is around 70% (i.e. probably with deeper networks the system has greater accuracy). 
 
 In particular, I want to look for similarities between spike proteins
 of HIV-1 and those of 2019-nCoV, where in a recent article "Uncanny similarity of unique inserts in the 2019-nCoV spike protein to HIV-1 gp120 and Gag" is underlined their structural similarity of amino acid residues with the HIV-1 (https://www.biorxiv.org/content/10.1101/2020.01.30.927871v1.full.pdf).
 
 This is also useful for the creation of an RNA idetification system for specific sequences who presented mutations during the epidemic evolution of the 2019-nCoV virus.
 
-![alt text](img/valid.jpg)(img/train.jpg)
+### Sensitivity plot 
+![alt text](img/valid.jpg)
+![alt text](img/train.jpg)
 
 
 The system input turns out to be a sequence of 12 RNA bases (i.e. that code for 4 amino acids). Each RNA string is converted into an image to give input to the convolutional network. 
