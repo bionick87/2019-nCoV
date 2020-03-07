@@ -74,6 +74,7 @@ pip install matplotlib
 pip install tqdm
 pip install textwrap3
 pip install python-gflags
+pip install text-to-image
 ```
 
 ### Installing
