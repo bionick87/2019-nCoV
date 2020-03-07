@@ -20,7 +20,7 @@ import random
 
 
 if __name__ == '__main__':
-    
+
     Flags = gflags.FLAGS
     gflags.DEFINE_bool   ("cuda", True, "use cuda")
     ############################################
@@ -33,10 +33,12 @@ if __name__ == '__main__':
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
     gflags.DEFINE_float  ("lr", 1e-3, "learning rate")
+
     ############################################
     gflags.DEFINE_integer("valid_every", 10, "valid model after each test_every iter.")
-    gflags.DEFINE_integer("save_every",  500, "save model after each test_every iter.")
+    gflags.DEFINE_integer("save_every",  50, "save model after each test_every iter.")
     ############################################
+    
     gflags.DEFINE_integer("max_iter_train", 500, "number of iteration for the training stage")
     gflags.DEFINE_integer("max_iter_valid", 170, "number of iteration for the valid stage")
     gflags.DEFINE_integer("nepochs", 5000, "number of epoch")
@@ -67,8 +69,8 @@ if __name__ == '__main__':
     optimizer        = torch.optim.Adam(net.parameters(),lr = Flags.lr )
     sensitivity_list = []
     loss_list        = [] 
+    epoch_valid      = 0 
     for epoch in range(Flags.nepochs):
-        epoch_valid = 0 
         loss_val    = 0
         print("\n ...Train at epoch " +str(epoch))
         cont_iter = 0 
@@ -121,10 +123,10 @@ if __name__ == '__main__':
                 sensitivity_valid.append(sensitivity)
             sensitivity_list.append(np.mean(sensitivity_valid))
             plot_sensitivity(sensitivity_list,save_path)
-            #if epoch % Flags.save_every == 0:
-            #    print("\n ...Save model")
-            #    torch.save(net.state_dict(),os.path.join(model_path,"model_"+str(epoch_valid)+'.pt'))
-            #    epoch_valid   += 1
+            if epoch % Flags.save_every == 0:
+                print("\n ...Save model")
+                torch.save(net.state_dict(),os.path.join(model_path,"model_"+str(epoch_valid)+'.pt'))
+                epoch_valid   += 1
 
 
 
