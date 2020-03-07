@@ -19,23 +19,23 @@ from utils import *
 
 if __name__ == '__main__':
     Flags = gflags.FLAGS
-    gflags.DEFINE_bool("cuda", False, "use cuda")
+    gflags.DEFINE_bool   ("cuda", False, "use cuda")
     ############################################
-    gflags.DEFINE_string("train_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/train", "training folder")
-    gflags.DEFINE_string("test_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/test", 'path of testing folder')
-    gflags.DEFINE_string("valid_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/valid", 'path of testing folder')
+    gflags.DEFINE_string ("train_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/train", "training folder")
+    gflags.DEFINE_string ("test_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/test", 'path of testing folder')
+    gflags.DEFINE_string ("valid_path", "/Users/nicolosavioli/Desktop/nCoV_dataset/valid", 'path of testing folder')
     ############################################
-    gflags.DEFINE_string("save_folder", "/Users/nicolosavioli/Desktop", 'path of testing folder')
+    gflags.DEFINE_string ("save_folder", "/Users/nicolosavioli/Desktop", 'path of testing folder')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
     gflags.DEFINE_float  ("lr", 1e-3, "learning rate")
     gflags.DEFINE_integer("valid_every", 1, "valid model after each test_every iter.")
-    gflags.DEFINE_integer("max_iter_train", 40, "number of iteration for the training stage")
-    gflags.DEFINE_integer("max_iter_valid", 40, "number of iteration for the valid stage")
-    gflags.DEFINE_integer("max_iter_save", 2, "number of iteration before saving model")
-    gflags.DEFINE_integer("nepochs", 100, "number of epoch")
-    gflags.DEFINE_string("gpu_ids", "0", "gpu ids used to train")
+    gflags.DEFINE_integer("max_iter_train", 1000, "number of iteration for the training stage")
+    gflags.DEFINE_integer("max_iter_valid", 300, "number of iteration for the valid stage")
+    gflags.DEFINE_integer("max_iter_save",  10, "number of iteration before saving model")
+    gflags.DEFINE_integer("nepochs", 1000, "number of epoch")
+    gflags.DEFINE_string ("gpu_ids", "0", "gpu ids used to train")
     Flags(sys.argv)
     #############################################
     trainSet    = Dataset(Flags.train_path,Flags.test_path,Flags.valid_path,Flags.max_iter_train,"train")
@@ -46,8 +46,10 @@ if __name__ == '__main__':
     #############################################
     loss_BCE    = torch.nn.BCEWithLogitsLoss(size_average=True)
     net         = SiameseNet()
+    #############################################
     save_path   = os.path.join(Flags.save_folder,"save_data")
     model_path  = os.path.join(save_path,"models")
+    #############################################
     makeFolder(save_path)
     makeFolder(model_path)
 
