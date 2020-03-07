@@ -19,7 +19,7 @@ from utils import *
 
 if __name__ == '__main__':
     Flags = gflags.FLAGS
-    gflags.DEFINE_bool   ("cuda", False, "use cuda")
+    gflags.DEFINE_bool   ("cuda", True, "use cuda")
     ############################################
     gflags.DEFINE_string ("train_path", "/vol/biomedic2/ns87/conv-19/train", "training folder")
     gflags.DEFINE_string ("test_path", "/vol/biomedic2/ns87/conv-19/test", 'path of testing folder')
