@@ -20,6 +20,7 @@ import random
 
 
 if __name__ == '__main__':
+    
     Flags = gflags.FLAGS
     gflags.DEFINE_bool   ("cuda", True, "use cuda")
     ############################################
