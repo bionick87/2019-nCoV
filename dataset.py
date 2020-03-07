@@ -75,11 +75,11 @@ class Dataset(Dataset):
               if random_select == 0:
                  image1 = pos_data
                  image2 = pos_data
-                 label  = torch.from_numpy(np.array([0], dtype=np.float32))
+                 label  = torch.from_numpy(np.array([0.0], dtype=np.float32))
               else:
                  image1 = pos_data
                  image2 = neg_data
-                 label  = torch.from_numpy(np.array([1], dtype=np.float32))
+                 label  = torch.from_numpy(np.array([1.0], dtype=np.float32))
         else:
                  image1 = pos_data
                  image2 = neg_data
