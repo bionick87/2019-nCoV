@@ -32,9 +32,9 @@ def plot(list_valid,pathSave):
     fig            = plt.figure()
     ax             = fig.add_subplot(111)
     # txt write
-    ax.set_title   ("Error valid plot")
-    ax.plot        (list_valid, '-',  label="Error valid",color='r')
-    ax.set_ylabel  ('Error to identify two different RNA sequences')
+    ax.set_title   ("Sensitivity plot on validset")
+    ax.plot        (list_valid, '-',  label="Sensitivity",color='r')
+    ax.set_ylabel  ('Sensitivity (%)')
     ax.set_xlabel  ("Epochs")
     ax.legend      (loc='lower right')
     handles, labels = plt.gca().get_legend_handles_labels()
