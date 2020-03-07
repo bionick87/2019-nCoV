@@ -33,8 +33,8 @@ def plot_sensitivity(list_valid,pathSave):
     ax             = fig.add_subplot(111)
     # txt write
     ax.set_title   ("Sensitivity plot on validset")
-    ax.plot        (list_valid, '-',  label="Sensitivity",color='r')
-    ax.set_ylabel  ('Sensitivity')
+    ax.plot        (list_valid, '-',  label="The sensitivity of RNA COVID-2019 identification",color='r')
+    ax.set_ylabel  ('Sensitivity ')
     ax.set_xlabel  ("Epochs")
     ax.legend      (loc='lower right')
     handles, labels = plt.gca().get_legend_handles_labels()
