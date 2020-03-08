@@ -38,7 +38,7 @@ if __name__ == '__main__':
     gflags.DEFINE_integer("valid_every", 200, "valid model after each test_every iter.")
     gflags.DEFINE_integer("save_every",  500, "save model after each test_every iter.")
     ############################################
-    gflags.DEFINE_integer("max_iter_train", 500, "number of iteration for the training stage")
+    gflags.DEFINE_integer("max_iter_train", 500000, "number of iteration for the training stage")
     gflags.DEFINE_integer("max_iter_valid", 200, "number of iteration for the valid stage")
     gflags.DEFINE_integer("nepochs", 2000, "number of epoch")
     gflags.DEFINE_string ("gpu_ids", "0", "gpu ids used to train")
@@ -99,13 +99,13 @@ if __name__ == '__main__':
                     test1, test2  = valid1.cuda(), valid2.cuda()
                 else:
                      test1, test2 = Variable(valid1), Variable(valid2)
-                output_net    = net.forward(test1, test2)
+                output_net        = net.forward(test1, test2)
                 y_actual = []
                 y_hat    = []
                 for i in range(output_net.size()[0]):
                     output_net_np = math.ceil(output_net[i].data.cpu().numpy())
                     y_actual.append(1)
-                    if output_net_np == 1.0:
+                    if output_net_np == 1.0 or output_net_np == 1:
                        y_hat.append(1)
                     else:
                        y_hat.append(0)
