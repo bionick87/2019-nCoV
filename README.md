@@ -36,7 +36,8 @@ The code is released for research purposes only and not for commercial purposes.
 
 ## RESULTS
 
-In the first phase, the Siamese Neural Network system was trained against strands of RAN derived from the HIV virus which presents biological diversity compared to COVID-2019.
+In the first phase, the Siamese Neural Network system was trained against strands of RAN derived from the HIV-1 virus which presents biological diversity compared to COVID-2019.
+
 As you can see from the graph, the system is able to identify the difference between RNA strands of coronavirus from HIV with a sensitivity that is around 70% (i.e. probably with deeper networks the system has greater accuracy). 
 
 In particular, I want to look for similarities between spike proteins
@@ -59,6 +60,11 @@ Below an example of a 12 RNA sequence of coronavirus and an HIV-1 one converting
 
 
 ![alt text](img/RNA.jpg)
+
+
+### Download Alexnet 2019-nCoV Siamese Neural Network model from this link:
+
+https://drive.google.com/file/d/12iMuo-pXG7APxDzBKthOvF6xFgKSopg-/view?usp=sharing
 
 
 ## USE

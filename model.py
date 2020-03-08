@@ -7,12 +7,14 @@ import torchvision.models as models
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
-        #self.alex_net = models.alexnet(pretrained=True).features
-        #self.liner    = nn.Sequential(nn.Linear(12544, 4096), nn.Sigmoid())
-        #self.out      = nn.Linear(4096, 1)
-        self.net       = models.vgg16(pretrained=True).features
-        self.liner     = nn.Sequential(nn.Linear(32768, 4096), nn.Sigmoid())
+        #  Alexnet model 
+        self.alex_net  = models.alexnet(pretrained=True).features
+        self.liner     = nn.Sequential(nn.Linear(12544, 4096), nn.Sigmoid())
         self.out       = nn.Linear(4096, 1)
+        #  VGG model - in test
+        #self.net       = models.vgg16(pretrained=True).features
+        #self.liner     = nn.Sequential(nn.Linear(32768, 4096), nn.Sigmoid())
+        #self.out       = nn.Linear(4096, 1)
 
     def cnn(self, x):
         x = self.net(x)
