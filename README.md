@@ -43,10 +43,18 @@ As you can see from the graph, the system is able to identify the difference bet
 This is also useful for the creation of an RNA identification system for specific sequences that presented mutations during the epidemic evolution of the 2019-nCoV virus.
 
 
-## USA sequence 
+# Australia sequence Submitted  (11-FEB-2020)
+
+# USA sequence Submitted (04-MAR-2020)
 
 
 https://www.ncbi.nlm.nih.gov/nuccore/MT152824.1?report=fasta
+
+
+# CHN sequence Submitted (04-MAR-2020)
+
+https://www.ncbi.nlm.nih.gov/nuccore/MT135044.1?report=fasta
+
 
 
 ### Sensitivity plot 
