@@ -4,6 +4,8 @@ import torch.nn.functional as F
 import torchvision.models as models
 
 
+
+
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
