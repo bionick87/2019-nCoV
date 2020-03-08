@@ -40,10 +40,14 @@ In the first phase, the Siamese Neural Network system was trained against strand
 
 As you can see from the graph, the system is able to identify the difference between RNA strands of coronavirus from HIV with a sensitivity that is around 70% (i.e. probably with deeper networks the system has greater accuracy). 
 
-In particular, I want to look for similarities between spike proteins
-of HIV-1 and those of 2019-nCoV, wherein a recent article "Uncanny similarity of unique inserts in the 2019-nCoV spike protein to HIV-1 gp120 and Gag" is underlined their structural similarity of amino acid residues with the HIV-1 (https://www.biorxiv.org/content/10.1101/2020.01.30.927871v1.full.pdf).
-
 This is also useful for the creation of an RNA identification system for specific sequences that presented mutations during the epidemic evolution of the 2019-nCoV virus.
+
+
+## USA sequence 
+
+
+https://www.ncbi.nlm.nih.gov/nuccore/MT152824.1?report=fasta
+
 
 ### Sensitivity plot 
 
