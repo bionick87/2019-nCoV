@@ -10,6 +10,7 @@ from   PIL import Image
 from   torchvision import transforms
 import cv2
 from   PIL import Image
+import math
 
 
 class Dataset(Dataset):
@@ -28,16 +29,28 @@ class Dataset(Dataset):
         #######################
         self.negTrain,\
         self.posTrain = self.loadData(dataPathTrain)
+        self.negTrain = self.removeMACOS(self.negTrain)
+        self.posTrain = self.removeMACOS(self.posTrain)
+
         self.negValid,\
         self.posValid = self.loadData(dataPathValid)
+        self.negValid = self.removeMACOS(self.negValid)
+        self.posValid = self.removeMACOS(self.posValid)
+
         self.negTest,\
         self.posTest  = self.loadData(dataPathTest)
+        self.negTest  = self.removeMACOS(self.negTest)
+        self.posTest  = self.removeMACOS(self.posTest)
         #######################
         self.dataPathTrain = dataPathTrain
         self.dataPathValid = dataPathValid
         self.dataPathTest  = dataPathTest
         self.type          = type
         self.iter          = iteration
+    
+    def removeMACOS(self,list):
+        if ".DS_Store" in list: list.remove(".DS_Store")
+        return list
 
     def loadData(self, dataPath):
         pos = os.listdir(os.path.join(dataPath,"negative"))

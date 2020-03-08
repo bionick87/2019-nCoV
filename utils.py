@@ -48,7 +48,7 @@ def plot_loss(list_train,pathSave):
     ax             = fig.add_subplot(111)
     # txt write
     ax.set_title   ("MSE loss plot on trainset")
-    ax.plot        (list_train, '-*',  label="Train loss",color='r')
+    ax.plot        (list_train, '-',  label="Train loss",color='r')
     ax.set_ylabel  ('MSE')
     ax.set_xlabel  ("Epochs")
     ax.legend      (loc='lower right')
