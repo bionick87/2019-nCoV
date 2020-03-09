@@ -1,5 +1,4 @@
 import torch
-import pickle
 import torchvision
 import torchvision.datasets as dset
 from   torchvision      import transforms
@@ -12,10 +11,9 @@ import time
 import numpy            as np
 import gflags 
 import sys
-from   collections      import deque
 import os
 from   tqdm import tqdm
-from utils import *
+from   utils import *
 import random
 import math
 
@@ -24,12 +22,11 @@ if __name__ == '__main__':
 
     Flags = gflags.FLAGS
     gflags.DEFINE_bool   ("cuda", True, "use cuda")
-    
+
     ############################################
     #gflags.DEFINE_string ("train_path", "/Users/nicolosavioli/Desktop/dataset/train", "training folder to be set")
     #gflags.DEFINE_string ("test_path", "/Users/nicolosavioli/Desktop/dataset/test",   "path of testing folder to be set")
     #gflags.DEFINE_string ("valid_path", "/Users/nicolosavioli/Desktop/dataset/valid", "path of testing folder to be set")
-
     ############################################
     #gflags.DEFINE_string ("save_folder", "/Users/nicolosavioli/Desktop/dave-data", 'path of testing folder to be set!')
     ############################################
