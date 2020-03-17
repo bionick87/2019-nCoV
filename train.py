@@ -28,9 +28,12 @@ if __name__ == '__main__':
     gflags.DEFINE_string ("test_path", "/vol/biomedic2/ns87/conv-19/test",   "path of testing folder to be set")
     gflags.DEFINE_string ("valid_path", "/vol/biomedic2/ns87/conv-19/valid", "path of testing folder to be set")
     ############################################
-    
+
     gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save", 'path of testing folder to be set!')
     ############################################
+
+
+    
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
     gflags.DEFINE_float  ("lr", 1e-4, "learning rate")
