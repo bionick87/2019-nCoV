@@ -24,11 +24,11 @@ if __name__ == '__main__':
     gflags.DEFINE_bool   ("cuda", False, "use cuda")
 
     ############################################
-    gflags.DEFINE_string ("train_path", "/Users/nicolosavioli/Desktop/dataset/train", "training folder to be set")
-    gflags.DEFINE_string ("test_path", "/Users/nicolosavioli/Desktop/dataset/test",   "path of testing folder to be set")
-    gflags.DEFINE_string ("valid_path", "/Users/nicolosavioli/Desktop/dataset/valid", "path of testing folder to be set")
+    gflags.DEFINE_string ("train_path", "/vol/biomedic2/ns87/conv-19/train", "training folder to be set")
+    gflags.DEFINE_string ("test_path", "/vol/biomedic2/ns87/conv-19/test",   "path of testing folder to be set")
+    gflags.DEFINE_string ("valid_path", "/vol/biomedic2/ns87/conv-19/valid", "path of testing folder to be set")
     ############################################
-    gflags.DEFINE_string ("save_folder", "/Users/nicolosavioli/Desktop/save", 'path of testing folder to be set!')
+    gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save", 'path of testing folder to be set!')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
