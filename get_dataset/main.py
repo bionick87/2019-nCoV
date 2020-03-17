@@ -7,13 +7,44 @@ import cv2
 from   sklearn.model_selection import train_test_split
 
 
+def translate(seq): 
+    table = { 
+        'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M', 
+        'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T', 
+        'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K', 
+        'AGC':'S', 'AGT':'S', 'AGA':'R', 'AGG':'R',                  
+        'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L', 
+        'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P', 
+        'CAC':'H', 'CAT':'H', 'CAA':'Q', 'CAG':'Q', 
+        'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGT':'R', 
+        'GTA':'V', 'GTC':'V', 'GTG':'V', 'GTT':'V', 
+        'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A', 
+        'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E', 
+        'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGT':'G', 
+        'TCA':'S', 'TCC':'S', 'TCG':'S', 'TCT':'S', 
+        'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L', 
+        'TAC':'Y', 'TAT':'Y', 'TAA':'', 'TAG':'', 
+        'TGC':'C', 'TGT':'C', 'TGA':'', 'TGG':'W', 
+    } 
+    protein = "" 
+    codons  = [seq[i:i+3] for i in range(0, len(seq), 3)]
+    for codon in codons:
+        if len(codon)>2:
+           protein+= table[codon] 
+    return protein 
+
+
 def readGenSeq(path_file):
     with open(path_file, 'r') as f:
         data = f.read()
+
+    data = data.replace("\n", "") 
+    data = data.replace("\r", "") 
     return data
 
 def SplitStrands(seq,nstrands):
-    seq_txt         = readGenSeq(seq)
+    seq_txt         = translate(readGenSeq(seq))
+    print(seq_txt)
     nstrandsList    = wrap(seq_txt,nstrands)
     train, tmp_test = train_test_split(nstrandsList, test_size=0.4, random_state=42)
     test,  valid    = train_test_split(tmp_test,     test_size=0.5, random_state=42)
@@ -33,14 +64,14 @@ def getData(nstrandsList,pathSave):
         cont += 1
 
 if __name__ == "__main__":
-
     # https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3?report=fasta
-    path_file_nCoV      = "./virus_genome/2019-nCoV.txt"
-    path_file_HIV       = "./virus_genome/HIV.txt"
+    path_file_nCoV      = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/2019-nCoV.txt"
+    path_file_HIV       = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/HIV.txt"
+    path_ebola          = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/ebola.txt"
     # Dataset folder path 
-    path_dataset_fodler = "save-folder-path"
+    path_dataset_fodler = "/Users/nicolosavioli/Desktop/dataset"
     # Number of RNA vrius strands
-    nstrands            = 12
+    nstrands            = 10
     ##############################
     nCoV_train,\
     nCoV_test,\
@@ -49,6 +80,10 @@ if __name__ == "__main__":
     HIV_train,\
     HIV_test,\
     HIV_valid           = SplitStrands(path_file_HIV,nstrands) 
+    ##############################
+    ebola_train,\
+    ebola_test,\
+    ebola_valid         = SplitStrands(path_file_HIV,nstrands) 
     ##############################
     makeFolder(path_dataset_fodler)
     ##############################
@@ -78,14 +113,21 @@ if __name__ == "__main__":
     print("\n ... Generete nCoV-2019 dataset train")
     getData(nCoV_train,save_path_file_nCoV_train)
     getData(HIV_train,save_path_file_HIV_train)
+    getData(ebola_train,save_path_file_HIV_train)
     ###############################
     print("\n ... Generete nCoV-2019 dataset valid")
     getData(nCoV_valid,save_path_file_nCoV_valid)
     getData(HIV_valid,save_path_file_HIV_valid)
-    ###############################
+    getData(ebola_valid,save_path_file_HIV_valid)
+    ##############################
     print("\n ... Generete nCoV-2019 dataset test")
     getData(nCoV_test,save_path_file_nCoV_test)
     getData(HIV_test,save_path_file_HIV_test)
-    ###############################
+    getData(ebola_test,save_path_file_HIV_test)
+    ##############################
+
+
+
+
 
 

@@ -21,23 +21,23 @@ import math
 if __name__ == '__main__':
 
     Flags = gflags.FLAGS
-    gflags.DEFINE_bool   ("cuda", True, "use cuda")
+    gflags.DEFINE_bool   ("cuda", False, "use cuda")
 
     ############################################
-    #gflags.DEFINE_string ("train_path", "/Users/nicolosavioli/Desktop/dataset/train", "training folder to be set")
-    #gflags.DEFINE_string ("test_path", "/Users/nicolosavioli/Desktop/dataset/test",   "path of testing folder to be set")
-    #gflags.DEFINE_string ("valid_path", "/Users/nicolosavioli/Desktop/dataset/valid", "path of testing folder to be set")
+    gflags.DEFINE_string ("train_path", "/Users/nicolosavioli/Desktop/dataset/train", "training folder to be set")
+    gflags.DEFINE_string ("test_path", "/Users/nicolosavioli/Desktop/dataset/test",   "path of testing folder to be set")
+    gflags.DEFINE_string ("valid_path", "/Users/nicolosavioli/Desktop/dataset/valid", "path of testing folder to be set")
     ############################################
-    #gflags.DEFINE_string ("save_folder", "/Users/nicolosavioli/Desktop/dave-data", 'path of testing folder to be set!')
+    gflags.DEFINE_string ("save_folder", "/Users/nicolosavioli/Desktop/save", 'path of testing folder to be set!')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
     gflags.DEFINE_float  ("lr", 1e-4, "learning rate")
     ############################################
     gflags.DEFINE_integer("valid_every", 1, "valid model after each test_every iter.")
-    gflags.DEFINE_integer("save_every",  500, "save model after each test_every iter.")
+    gflags.DEFINE_integer("save_every",  10, "save model after each test_every iter.")
     ############################################
-    gflags.DEFINE_integer("max_iter_train", 50000, "number of iteration for the training stage")
+    gflags.DEFINE_integer("max_iter_train", 200, "number of iteration for the training stage")
     gflags.DEFINE_integer("max_iter_valid", 200, "number of iteration for the valid stage")
     gflags.DEFINE_integer("nepochs", 1000, "number of epoch")
     gflags.DEFINE_string ("gpu_ids", "0", "gpu ids used to train")

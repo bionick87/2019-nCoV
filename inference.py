@@ -18,14 +18,12 @@ import random
 import math
 
 
-
 def inference(path):
     model = SiameseNet()
-    model.load_state_dict(torch.load(path))
-
-
+    model.load_state_dict(torch.load(path,map_location=torch.device('cpu')))
+    print(model)
 
 
 if __name__== "__main__":
     path_model = "/Users/nicolosavioli/Desktop/alexnet_2019-nCoV.pt"
-	inference(path)
+    inference(path_model)
