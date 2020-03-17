@@ -65,11 +65,11 @@ def getData(nstrandsList,pathSave):
 
 if __name__ == "__main__":
     # https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3?report=fasta
-    path_file_nCoV      = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/2019-nCoV.txt"
-    path_file_HIV       = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/HIV.txt"
-    path_ebola          = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/ebola.txt"
+    path_file_nCoV      = "/homes/nsavioli/Desktop/2019-nCoV/2019-nCoV.txt"
+    path_file_HIV       = "/homes/nsavioli/Desktop/2019-nCoV/HIV.txt"
+    path_ebola          = "/homes/nsavioli/Desktop/2019-nCoV/ebola.txt"
     # Dataset folder path 
-    path_dataset_fodler = "/Users/nicolosavioli/Desktop/dataset"
+    path_dataset_fodler = "/vol/biomedic2/ns87/conv-19"
     # Number of RNA vrius strands
     nstrands            = 10
     ##############################
