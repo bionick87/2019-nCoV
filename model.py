@@ -10,6 +10,7 @@ class SiameseNet(nn.Module):
         self.alex_net = models.alexnet(pretrained=True).features
         self.liner    = nn.Sequential(nn.Linear(12544, 4096), nn.Sigmoid())
         self.out      = nn.Linear(4096, 1)
+        self.softmax  = torch.nn.Softmax(dim=None)
 
     def cnn(self, x):
         x = self.alex_net(x)
@@ -21,7 +22,7 @@ class SiameseNet(nn.Module):
         cnn1 = self.cnn(x1)
         cnn2 = self.cnn(x2)
         dis  = torch.abs(cnn1 - cnn2)
-        out  = self.out(dis)
+        out  = self.softmax(self.out(dis))
         return out
 
 '''

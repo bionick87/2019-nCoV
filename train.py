@@ -35,7 +35,7 @@ if __name__ == '__main__':
     gflags.DEFINE_float  ("lr", 1e-4, "learning rate")
     ############################################
     gflags.DEFINE_integer("valid_every", 1, "valid model after each test_every iter.")
-    gflags.DEFINE_integer("save_every",  500, "save model after each test_every iter.")
+    gflags.DEFINE_integer("save_every",  10, "save model after each test_every iter.")
     ############################################
     gflags.DEFINE_integer("max_iter_train", 5000, "number of iteration for the training stage")
     gflags.DEFINE_integer("max_iter_valid", 200, "number of iteration for the valid stage")
@@ -43,17 +43,18 @@ if __name__ == '__main__':
     gflags.DEFINE_string ("gpu_ids", "0", "gpu ids used to train")
     Flags(sys.argv)
     #############################################
-    trainSet    = Dataset(Flags.train_path,Flags.test_path,Flags.valid_path,Flags.max_iter_train,"train")
-    trainLoader = DataLoader(trainSet, batch_size=Flags.batch_size, shuffle=False, num_workers=Flags.workers)
+    trainSet     = Dataset(Flags.train_path,Flags.test_path,Flags.valid_path,Flags.max_iter_train,"train")
+    trainLoader  = DataLoader(trainSet, batch_size=Flags.batch_size, shuffle=False, num_workers=Flags.workers)
     #############################################
-    validSet    = Dataset(Flags.valid_path,Flags.test_path,Flags.valid_path,Flags.max_iter_valid,"valid")
-    validLoader = DataLoader(validSet, batch_size=Flags.batch_size, shuffle=False, num_workers=Flags.workers)
+    validSet     = Dataset(Flags.valid_path,Flags.test_path,Flags.valid_path,Flags.max_iter_valid,"valid")
+    validLoader  = DataLoader(validSet, batch_size=Flags.batch_size, shuffle=False, num_workers=Flags.workers)
     #############################################
-    loss_MSE    = torch.nn.MSELoss()
-    net         = SiameseNet()
+    #loss_fn     = torch.nn.MSELoss()
+    loss_fn      = torch.nn.BCELoss()
+    net          = SiameseNet()
     #############################################
-    save_path   = os.path.join(Flags.save_folder,"save_data")
-    model_path  = os.path.join(save_path,"models")
+    save_path    = os.path.join(Flags.save_folder,"save_data")
+    model_path   = os.path.join(save_path,"models")
     #############################################
     makeFolder(save_path)
     makeFolder(model_path)
@@ -69,7 +70,7 @@ if __name__ == '__main__':
     loss_list        = [] 
     epoch_valid      = 0 
     for epoch in range(Flags.nepochs):
-        loss_val    = 0
+        loss_val     = 0
         print("\n ...Train at epoch " +str(epoch))
         cont_iter = 0 
         for batch_id, (img1, img2, label) in tqdm(enumerate(trainLoader, 1)):
@@ -80,7 +81,7 @@ if __name__ == '__main__':
                 img1, img2, label = Variable(img1), Variable(img2), Variable(label)
             optimizer.zero_grad()
             output    = net.forward(img1, img2)
-            loss      = loss_MSE       (output, label)
+            loss      = loss_fn    (output, label)
             loss_val += loss.item  ()
             optimizer.zero_grad()
             loss.backward()
