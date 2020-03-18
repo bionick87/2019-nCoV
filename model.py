@@ -10,8 +10,8 @@ class SiameseNet(nn.Module):
         self.alex_net = models.alexnet(pretrained=True).features
         self.liner    = nn.Sequential(nn.Linear(12544, 4096), nn.Sigmoid())
         self.out      = nn.Linear(4096, 1)
-        self.sig      = nn.Sigmoid()
-        self.drop     = nn.Dropout(0.5)
+        #self.sig      = nn.Sigmoid()
+        #self.drop     = nn.Dropout(0.5)
 
     def cnn(self, x):
         x = self.alex_net(x)
@@ -23,7 +23,7 @@ class SiameseNet(nn.Module):
         cnn1 = self.cnn(x1)
         cnn2 = self.cnn(x2)
         dis  = torch.abs(cnn1 - cnn2)
-        out  = self.sig(self.out(dis))
+        out  = self.out(dis)
         return out
 
 '''

@@ -62,11 +62,6 @@ def getData(nstrandsList,pathSave):
         cv2.imwrite(os.path.join(pathSave,"strands_"+str(cont)+".png"), img) 
         cont += 1
 
-def getProteinData(protein,pathSave):
-    text_to_image.encode(protein,os.path.join(pathSave,"protein.png"))
-    img = cv2.imread(os.path.join(pathSave,"protein.png"))
-    img = cv2.resize(img,(256,256))
-    cv2.imwrite(os.path.join(pathSave,"protein.png"), img) 
 
 def getDataset():
     # https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3?report=fasta
@@ -133,10 +128,11 @@ def getDataset():
 
 
 def getHR1Domain_target():
-    seq_hr1      = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/HR1.txt"
-    path_save    = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome"
-    protein_hr1  = translate(readGenSeq(seq_hr1))
-    getProteinData(protein_hr1,path_save)
+    seq_hr1       = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/HR1.txt"
+    path_save     = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome"
+    protein_hr1   = readGenSeq(seq_hr1)
+    nstrandsP     = wrap(protein_hr1,10)
+    getData(nstrandsP,path_save)
 
 
 if __name__ == "__main__":
