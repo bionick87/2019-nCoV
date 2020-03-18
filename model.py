@@ -22,7 +22,7 @@ class SiameseNet(nn.Module):
     def forward(self, x1, x2):
         cnn1 = self.cnn(x1)
         cnn2 = self.cnn(x2)
-        dis  = self.drop(torch.abs(cnn1 - cnn2))
+        dis  = torch.abs(cnn1 - cnn2)
         out  = self.sig(self.out(dis))
         return out
 
