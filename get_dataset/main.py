@@ -37,7 +37,6 @@ def translate(seq):
 def readGenSeq(path_file):
     with open(path_file, 'r') as f:
         data = f.read()
-
     data = data.replace("\n", "") 
     data = data.replace("\r", "") 
     return data
@@ -135,9 +134,18 @@ def getHR1Domain_target():
     getData(nstrandsP,path_save)
 
 
+def getPep(path_file):
+    path_file = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/pepbank.txt"
+    with open(path_file, 'r') as f:
+        lines = f.readlines()
+        print(lines)
+
+
 if __name__ == "__main__":
     #getDataset()
-    getHR1Domain_target()
+    #getHR1Domain_target()
+    getPep()
+
 
 
 
