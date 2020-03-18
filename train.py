@@ -48,8 +48,8 @@ if __name__ == '__main__':
     validSet     = Dataset(Flags.valid_path,Flags.test_path,Flags.valid_path,Flags.max_iter_valid,"valid")
     validLoader  = DataLoader(validSet, batch_size=Flags.batch_size, shuffle=False, num_workers=Flags.workers)
     #############################################
-    #loss_fn     = torch.nn.MSELoss()
-    loss_fn      = torch.nn.BCELoss()
+    loss_fn     = torch.nn.MSELoss()
+    #loss_fn      = torch.nn.BCELoss()
     net          = SiameseNet()
     #############################################
     save_path    = os.path.join(Flags.save_folder,"save_data")

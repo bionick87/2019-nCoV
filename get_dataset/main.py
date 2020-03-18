@@ -44,7 +44,6 @@ def readGenSeq(path_file):
 
 def SplitStrands(seq,nstrands):
     seq_txt         = translate(readGenSeq(seq))
-    print(seq_txt)
     nstrandsList    = wrap(seq_txt,nstrands)
     train, tmp_test = train_test_split(nstrandsList, test_size=0.4, random_state=42)
     test,  valid    = train_test_split(tmp_test,     test_size=0.5, random_state=42)
@@ -63,7 +62,13 @@ def getData(nstrandsList,pathSave):
         cv2.imwrite(os.path.join(pathSave,"strands_"+str(cont)+".png"), img) 
         cont += 1
 
-if __name__ == "__main__":
+def getProteinData(protein,pathSave):
+    text_to_image.encode(protein,os.path.join(pathSave,"protein.png"))
+    img = cv2.imread(os.path.join(pathSave,"protein.png"))
+    img = cv2.resize(img,(256,256))
+    cv2.imwrite(os.path.join(pathSave,"protein.png"), img) 
+
+def getDataset():
     # https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3?report=fasta
     path_file_nCoV      = "/homes/nsavioli/Desktop/2019-nCoV/virus_genome/2019-nCoV.txt"
     path_file_HIV       = "/homes/nsavioli/Desktop/2019-nCoV/virus_genome/HIV.txt"
@@ -126,6 +131,17 @@ if __name__ == "__main__":
     getData(ebola_test,save_path_file_HIV_test)
     ##############################
 
+
+def getHR1Domain_target():
+    seq_hr1      = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/HR1.txt"
+    path_save    = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome"
+    protein_hr1  = translate(readGenSeq(seq_hr1))
+    getProteinData(protein_hr1,path_save)
+
+
+if __name__ == "__main__":
+    #getDataset()
+    getHR1Domain_target()
 
 
 
