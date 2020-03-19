@@ -32,9 +32,9 @@ def plot_sensitivity(list_valid,pathSave):
     fig            = plt.figure()
     ax             = fig.add_subplot(111)
     # txt write
-    ax.set_title   ("Sensitivity plot on validset")
-    ax.plot        (list_valid, '-',  label="The sensitivity of RNA COVID-2019 identification",color='r')
-    ax.set_ylabel  ('Sensitivity ')
+    ax.set_title   ("Validset sensitivity")
+    ax.plot        (list_valid, '-',  label="Sensitivity",color='r')
+    ax.set_ylabel  ('Sensitivity (%)')
     ax.set_xlabel  ("Epochs")
     ax.legend      (loc='lower right')
     handles, labels = plt.gca().get_legend_handles_labels()
@@ -47,8 +47,8 @@ def plot_loss(list_train,pathSave):
     fig            = plt.figure()
     ax             = fig.add_subplot(111)
     # txt write
-    ax.set_title   ("MSE loss plot on trainset")
-    ax.plot        (list_train, '-',  label="Train loss",color='r')
+    ax.set_title   ("Trainset MSE loss")
+    ax.plot        (list_train, '-',  label="Loss",color='r')
     ax.set_ylabel  ('MSE')
     ax.set_xlabel  ("Epochs")
     ax.legend      (loc='lower right')

@@ -134,12 +134,20 @@ def getHR1Domain_target():
     getData(nstrandsP,path_save)
 
 
-def getPep(path_file):
+def getPep():
+    clean     = []
+    cont      = 0
     path_file = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/pepbank.txt"
+    pathSave  = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/pepbank"
     with open(path_file, 'r') as f:
-        lines = f.readlines()
-        print(lines)
-
+        lines = f.readlines() 
+    for l in lines:
+        clean.append(l.replace("\n", ""))    
+    for pep in clean:
+        text_to_image.encode(pep,os.path.join(pathSave,pep+".png"))
+        img = cv2.imread(os.path.join(pathSave,pep+".png"))
+        img = cv2.resize(img,(256,256))
+        cv2.imwrite(os.path.join(pathSave,pep+".png"), img) 
 
 if __name__ == "__main__":
     #getDataset()
