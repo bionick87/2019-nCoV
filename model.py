@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.models as models
 
-
+'''
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
@@ -25,6 +25,7 @@ class SiameseNet(nn.Module):
         return out
 
 '''
+
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
@@ -45,4 +46,3 @@ class SiameseNet(nn.Module):
         dis  = torch.abs(cnn1 - cnn2)
         out  = self.out(dis)
         return out
-'''
