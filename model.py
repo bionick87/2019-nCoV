@@ -56,8 +56,8 @@ class SiameseNet(nn.Module):
         resnet         = models.resnext50_32x4d(pretrained=True)
         modules        = list(resnet.children())[:-1]      # delete the last fc layer.
         self.net       = nn.Sequential(*modules)
-        self.liner     = nn.Sequential(nn.Linear(2048, 4096), nn.Sigmoid())
-        self.out       = nn.Linear(4096, 1)
+        self.liner     = nn.Sequential(nn.Linear(2048, 1024), nn.Sigmoid())
+        self.out       = nn.Linear(1024, 1)
 
     def cnn(self, x):
         x = self.net(x)
