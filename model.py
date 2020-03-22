@@ -82,8 +82,8 @@ class SiameseNet(nn.Module):
         resnet         = models.inception_v3(pretrained=True)
         modules        = list(resnet.children())[:-1]      # delete the last fc layer.
         self.net       = nn.Sequential(*modules)
-        self.liner     = nn.Sequential(nn.Linear(2048, 1024), nn.Sigmoid())
-        self.out       = nn.Linear(1024, 1)
+        self.liner     = nn.Sequential(nn.Linear(1000, 512), nn.Sigmoid())
+        self.out       = nn.Linear(512, 1)
 
     def cnn(self, x):
         x = self.net(x)
