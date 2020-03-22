@@ -8,7 +8,7 @@ class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
         self.alex_net = models.alexnet(pretrained=True).features
-        self.liner    = nn.Sequential(nn.Linear(12544, 6272), nn.Sigmoid())
+        self.liner    = nn.Sequential(nn.Linear(12544, 6272))
         self.out      = nn.Linear(6272, 1)
 
     def cnn(self, x):
@@ -47,8 +47,6 @@ class SiameseNet(nn.Module):
         return out
 '''
 
-
-'''
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
@@ -56,7 +54,7 @@ class SiameseNet(nn.Module):
         resnet         = models.resnext50_32x4d(pretrained=True)
         modules        = list(resnet.children())[:-1]      # delete the last fc layer.
         self.net       = nn.Sequential(*modules)
-        self.liner     = nn.Sequential(nn.Linear(2048, 1024), nn.Sigmoid())
+        self.liner     = nn.Sequential(nn.Linear(2048, 1024))
         self.out       = nn.Linear(1024, 1)
 
     def cnn(self, x):
@@ -71,7 +69,6 @@ class SiameseNet(nn.Module):
         dis  = torch.abs(cnn1 - cnn2)
         out  = self.out(dis)
         return out
-'''
 
 
 
