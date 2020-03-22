@@ -24,7 +24,6 @@ class SiameseNet(nn.Module):
         out  = self.out(dis)
         return out
 '''
-
 '''
 class SiameseNet(nn.Module):
     def __init__(self):
@@ -48,12 +47,11 @@ class SiameseNet(nn.Module):
         return out
 '''
 
-
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
         #  VGG model - in test
-        resnet         = models.wide_resnet101_2(pretrained=True)
+        resnet         = models.wide_resnet50_2(pretrained=True)
         modules        = list(resnet.children())[:-1]      # delete the last fc layer.
         self.net       = nn.Sequential(*modules)
         self.liner     = nn.Sequential(nn.Linear(2048, 1024), nn.Sigmoid())
