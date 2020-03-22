@@ -55,8 +55,6 @@ def get_inference(model_path,pep_path,hr1_path):
     print(pep)
 
 
-
-
 if __name__== "__main__":
     path_model = "/home/nick/Desktop/model/old/model_20.pt"
     path_pep   = "/home/nick/Desktop/2019-nCoV/virus_genome/pepbank"
