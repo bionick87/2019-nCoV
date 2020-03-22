@@ -5,6 +5,14 @@ import os
 import shutil
 
 
+
+def write_txt(lossList,lossSavePath):
+    if os.path.exists(lossSavePath):
+        os.remove(lossSavePath) 
+    with open(lossSavePath, "a") as f:
+        for d in range(len(lossList)):
+            f.write(str(lossList[d]) +"\n")
+
 def measure(y_actual, y_hat):
     TP = 0
     FP = 0
@@ -40,7 +48,8 @@ def plot_sensitivity(list_valid,pathSave):
     handles, labels = plt.gca().get_legend_handles_labels()
     by_label        = OrderedDict(zip(labels, handles))
     plt.legend     (by_label.values(), by_label.keys())
-    fig.savefig    (os.path.join  (pathSave, "valid.jpg"))
+    fig.savefig    (os.path.join             (pathSave, "valid.jpg"))
+    write_txt      (list_valid,os.path.join  (pathSave, "valid.txt"))
 
 
 def plot_loss(list_train,pathSave):
