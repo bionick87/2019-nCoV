@@ -21,10 +21,9 @@ class Dataset(Dataset):
         np.random.seed(0)
         #####################################
         self.transform = transforms.Compose([
-        transforms.RandomCrop((128, 128)),
-        transforms.RandomAffine(30),
-        transforms.RandomHorizontalFlip(),
-        transforms.Resize(256),
+        transforms.RandomResizedCrop(256, scale=(0.5, 1.0)),
+        transforms.RandomHorizontalFlip(0.5),
+        transforms.RandomVerticalFlip(0.5),
         transforms.ToTensor()])
         #####################################
         self.transform_v = transforms.Compose([
