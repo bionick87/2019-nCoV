@@ -31,10 +31,10 @@ if __name__ == '__main__':
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
-    gflags.DEFINE_float  ("lr", 1e-4, "learning rate")
+    gflags.DEFINE_float  ("lr", 1e-3, "learning rate")
     ############################################
-    gflags.DEFINE_integer("valid_every", 10, "valid model after each test_every iter.")
-    gflags.DEFINE_integer("save_every",  10, "save model after each test_every iter.")
+    gflags.DEFINE_integer("valid_every", 1, "valid model after each test_every iter.")
+    gflags.DEFINE_integer("save_every",  1, "save model after each test_every iter.")
     ############################################
     gflags.DEFINE_integer("max_iter_train", 5000, "number of iteration for the training stage")
     gflags.DEFINE_integer("max_iter_valid", 200, "number of iteration for the valid stage")
@@ -62,7 +62,7 @@ if __name__ == '__main__':
         if len(Flags.gpu_ids.split(",")) > 1:
            net = torch.nn.DataParallel(net)
         net.cuda()
-    optimizer        = torch.optim.Adam(net.parameters(),lr = Flags.lr )
+    optimizer        = torch.optim.SGD(net.parameters(),lr = Flags.lr, momentum=0.9, weight_decay=1e-4, nesterov=True)
     sensitivity_list = []
     loss_list        = [] 
     epoch_valid      = 0 

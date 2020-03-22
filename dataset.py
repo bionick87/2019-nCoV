@@ -22,7 +22,6 @@ class Dataset(Dataset):
         #####################################
         self.transform = transforms.Compose([
         transforms.RandomCrop((128, 128)),
-        transforms.ColorJitter(brightness = 2),
         transforms.RandomAffine(30),
         transforms.RandomHorizontalFlip(),
         transforms.Resize(256),
