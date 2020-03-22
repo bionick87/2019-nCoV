@@ -23,7 +23,6 @@ class Dataset(Dataset):
         self.transform = transforms.Compose([
         transforms.CenterCrop((150, 150)),
         transforms.ColorJitter(brightness = 2),
-        transforms.RandomRotate(15),
         transforms.RandomAffine(30),
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor()])
