@@ -32,7 +32,7 @@ if __name__ == '__main__':
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
-    gflags.DEFINE_float  ("lr", 1e-3, "learning rate")
+    gflags.DEFINE_float  ("lr", 1e-5, "learning rate")
     ############################################
     gflags.DEFINE_integer("valid_every", 100, "valid model after each test_every iter.")
     gflags.DEFINE_integer("save_every",  100, "save model after each test_every iter.")
@@ -57,7 +57,6 @@ if __name__ == '__main__':
     #############################################
     makeFolder(save_path)
     makeFolder(model_path)
-
     # multi gpu
     if Flags.cuda:
         os.environ["CUDA_VISIBLE_DEVICES"] = Flags.gpu_ids
