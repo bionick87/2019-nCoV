@@ -36,7 +36,7 @@ if __name__ == '__main__':
     gflags.DEFINE_integer("valid_every", 10, "valid model after each test_every iter.")
     gflags.DEFINE_integer("save_every",  10, "save model after each test_every iter.")
     ############################################
-    gflags.DEFINE_integer("max_iter_train", 50000, "number of iteration for the training stage")
+    gflags.DEFINE_integer("max_iter_train", 5000, "number of iteration for the training stage")
     gflags.DEFINE_integer("max_iter_valid", 200, "number of iteration for the valid stage")
     gflags.DEFINE_integer("nepochs", 1000, "number of epoch")
     gflags.DEFINE_string ("gpu_ids", "0", "gpu ids used to train")
