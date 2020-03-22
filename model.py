@@ -51,7 +51,7 @@ class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
         #  VGG model - in test
-        resnet         = models.wide_resnet50_2(pretrained=True)
+        resnet         = models.resnext50_32x4d(pretrained=True)
         modules        = list(resnet.children())[:-1]      # delete the last fc layer.
         self.net       = nn.Sequential(*modules)
         self.liner     = nn.Sequential(nn.Linear(2048, 1024), nn.Sigmoid())
