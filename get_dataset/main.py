@@ -5,6 +5,7 @@ import os
 from   tqdm import tqdm
 import cv2
 from   sklearn.model_selection import train_test_split
+import re
 
 
 def translate(seq): 
@@ -125,7 +126,6 @@ def getDataset():
     getData(ebola_test,save_path_file_HIV_test)
     ##############################
 
-
 def getHR1Domain_target():
     seq_hr1       = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/HR1.txt"
     path_save     = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome"
@@ -133,21 +133,31 @@ def getHR1Domain_target():
     nstrandsP     = wrap(protein_hr1,10)
     getData(nstrandsP,path_save)
 
-
 def getPep():
+    regex = {
+	"capital_letters": re.compile("[A-Z]")
+    }
     clean     = []
     cont      = 0
-    path_file = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/pepbank.txt"
-    pathSave  = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/pepbank"
+    path_file = "/home/nick/Desktop/code/2019-nCoV/virus_genome/peptite/antiviral.fasta"
+    pathSave  = "/home/nick/Desktop/pepdata"
     with open(path_file, 'r') as f:
-        lines = f.readlines() 
+        lines = f.readlines()
     for l in lines:
         clean.append(l.replace("\n", ""))    
     for pep in clean:
-        text_to_image.encode(pep,os.path.join(pathSave,pep+".png"))
-        img = cv2.imread(os.path.join(pathSave,pep+".png"))
-        img = cv2.resize(img,(256,256))
-        cv2.imwrite(os.path.join(pathSave,pep+".png"), img) 
+        if ">" in pep: 
+            continue
+        if "-" in pep:
+            continue
+        if "(" in pep:
+            continue
+        if regex["capital_letters"].match(pep):
+            print("..." + pep)
+            text_to_image.encode(pep,os.path.join(pathSave,pep+".png"))
+            img = cv2.imread(os.path.join(pathSave,pep+".png"))
+            img = cv2.resize(img,(256,256))
+            cv2.imwrite(os.path.join(pathSave,pep+".png"), img) 
 
 if __name__ == "__main__":
     #getDataset()
