@@ -10,7 +10,8 @@ class SiameseNet(nn.Module):
         super(SiameseNet, self).__init__()
         self.alex_net = models.alexnet(pretrained=True).features
         self.alex_net = self.alex_net[:8]
-        self.liner    = nn.Sequential(nn.Linear(12544, 6272))
+        #self.liner    = nn.Sequential(nn.Linear(12544, 6272))
+        self.liner    = nn.Sequential(nn.Linear(86400, 6272))
         self.out      = nn.Linear(6272, 1)
 
     def cnn(self, x):
