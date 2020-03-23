@@ -50,6 +50,7 @@ class SiameseNet(nn.Module):
     def cnn(self, x):
         x = self.net(x)
         x = x.view(x.size()[0],-1)
+        print(x.size())
         x = self.liner(x)
         return x
 
