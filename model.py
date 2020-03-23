@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.models as models
 
+
+# ALexNet
 '''
 class SiameseNet(nn.Module):
     def __init__(self):
@@ -10,7 +12,7 @@ class SiameseNet(nn.Module):
         self.alex_net = models.alexnet(pretrained=True).features
         self.liner    = nn.Sequential(nn.Linear(12544, 6272))
         self.out      = nn.Linear(6272, 1)
-        #self.sig       = nn.Sigmoid()
+        #self.sig     = nn.Sigmoid()
 
     def cnn(self, x):
         x = self.alex_net(x)
@@ -25,13 +27,15 @@ class SiameseNet(nn.Module):
         out  = self.out(dis)
         return out
 '''
-'''
+
+# VGG
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
         #  VGG model - in test
-        self.net       = models.vgg13(pretrained=True).features
-        self.liner     = nn.Sequential(nn.Linear(32768, 4096), nn.Sigmoid())
+        self.net       = models.vgg13(pretrained=True)
+        self.net       = list(self.net.children())[:-2][0][:-13]  
+        self.liner     = nn.Sequential(nn.Linear(32768, 4096))
         self.out       = nn.Linear(4096, 1)
 
     def cnn(self, x):
@@ -46,8 +50,10 @@ class SiameseNet(nn.Module):
         dis  = torch.abs(cnn1 - cnn2)
         out  = self.out(dis)
         return out
-'''
 
+
+# Resnet
+'''
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
@@ -69,4 +75,4 @@ class SiameseNet(nn.Module):
         dis  = torch.abs(cnn1 - cnn2)
         out  = self.out(dis)
         return out
-
+'''
