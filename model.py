@@ -47,6 +47,8 @@ class SmallVGG(nn.Module):
     def forward(self, x):
         return self.svgg(x)
 
+
+
 # VGG modify it's not VGG 13!
 class SiameseNet(nn.Module):
     def __init__(self):
