@@ -40,9 +40,9 @@ class SmallVGG(nn.Module):
         self.svgg[0]        = nn.Conv2d(3, 64, kernel_size=3, stride=2, padding=2)  
         self.svgg[0].weight.data[:, :, :, :] = self.pre_weights_0
         ##########################################################
-        #self.pre_weights_2 = self.svgg[2].weight      
-        #self.svgg[2]        = nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=2).cuda()  
-        #self.svgg[2].weight.data[:, :, :, :] = self.pre_weights_2
+        self.pre_weights_2 = self.svgg[2].weight      
+        self.svgg[2]        = nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=2).cuda()  
+        self.svgg[2].weight.data[:, :, :, :] = self.pre_weights_2
     
     def forward(self, x):
         return self.svgg(x)
@@ -55,7 +55,7 @@ class SiameseNet(nn.Module):
         super(SiameseNet, self).__init__()
         #  VGG model - in test
         self.net         = SmallVGG()
-        self.liner       = nn.Sequential(nn.Linear(262144, 4096))
+        self.liner       = nn.Sequential(nn.Linear(65536, 4096))
         self.out         = nn.Linear(4096, 1)
 
     def cnn(self, x):
