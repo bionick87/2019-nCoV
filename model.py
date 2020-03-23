@@ -33,8 +33,9 @@ class SmallVGG(nn.Module):
     def __init__(self):
         super(SmallVGG, self).__init__()
         #  VGG model - in test
-        self.net         = models.vgg13(pretrained=True)
-        self.svgg         = list(self.net.children())[:-2][0][:-13]
+        net         = models.vgg13(pretrained=True)
+        self.svgg        = list(net.children())[:-2][0][:-13]
+        print(self.svgg)
         ##########################################################
         self.pre_weights_0 = self.svgg[0].weight      
         self.svgg[0]        = nn.Conv2d(3, 64, kernel_size=3, stride=2, padding=2)  
