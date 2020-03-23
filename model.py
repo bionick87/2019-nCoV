@@ -35,7 +35,7 @@ class SiameseNet(nn.Module):
         #  VGG model - in test
         self.net       = models.vgg13(pretrained=True)
         self.net       = list(self.net.children())[:-2][0][:-13]  
-        self.liner     = nn.Sequential(nn.Linear(32768, 4096))
+        self.liner     = nn.Sequential(nn.Linear(1048576, 4096))
         self.out       = nn.Linear(4096, 1)
 
     def cnn(self, x):
