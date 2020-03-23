@@ -7,6 +7,7 @@ import torchvision.models as models
 # ALexNet
 class SiameseNet(nn.Module):
     def __init__(self):
+    
         super(SiameseNet, self).__init__()
         self.alex_net = models.alexnet(pretrained=True).features
         self.alex_net = self.alex_net[:8]
