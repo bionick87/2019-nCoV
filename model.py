@@ -28,7 +28,7 @@ class SiameseNet(nn.Module):
         return out
 '''
 
-# VGG
+# Small VGG
 class SmallVGG(nn.Module):
     def __init__(self):
         super(SmallVGG, self).__init__()
@@ -44,19 +44,16 @@ class SmallVGG(nn.Module):
         self.svgg[2]        = nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=2).cuda()  
         self.svgg[2].weight.data[:, :, :, :] = self.pre_weights_2
     
-    
     def forward(self, x):
         return self.svgg(x)
 
-# VGG
+# VGG modify it's not VGG 13!
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
         #  VGG model - in test
         self.net         = SmallVGG()
-        print("Sono qui 2")
-        print(self.net)
-        self.liner       = nn.Sequential(nn.Linear(500, 4096))
+        self.liner       = nn.Sequential(nn.Linear(65536, 4096))
         self.out         = nn.Linear(4096, 1)
 
     def cnn(self, x):
