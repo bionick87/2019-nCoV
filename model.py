@@ -34,17 +34,15 @@ class SmallVGG(nn.Module):
         super(SmallVGG, self).__init__()
         #  VGG model - in test
         net         = models.vgg13(pretrained=True)
-        self.svgg        = list(net.children())[:-2][0][:-13]
-        print("Sono qui 1")
-        print(self.svgg)
+        self.svgg   = list(net.children())[:-2][0][:-13]
         ##########################################################
-        #self.pre_weights_0 = self.svgg[0].weight      
+        self.pre_weights_0 = self.svgg[0].weight      
         self.svgg[0]        = nn.Conv2d(3, 64, kernel_size=3, stride=2, padding=2)  
-        #self.svgg[0].weight.data[:, :, :, :] = self.pre_weights_0
+        self.svgg[0].weight.data[:, :, :, :] = self.pre_weights_0
         ##########################################################
-        #self.pre_weights_2 = self.svgg[2].weight      
+        self.pre_weights_2 = self.svgg[2].weight      
         self.svgg[2]        = nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=2).cuda()  
-        #self.svgg[2].weight.data[:, :, :, :] = self.pre_weights_2
+        self.svgg[2].weight.data[:, :, :, :] = self.pre_weights_2
     
     
     def forward(self, x):
@@ -58,7 +56,7 @@ class SiameseNet(nn.Module):
         self.net         = SmallVGG()
         print("Sono qui 2")
         print(self.net)
-        self.liner       = nn.Sequential(nn.Linear(1048576, 4096))
+        self.liner       = nn.Sequential(nn.Linear(500, 4096))
         self.out         = nn.Linear(4096, 1)
 
     def cnn(self, x):
