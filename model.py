@@ -37,11 +37,11 @@ class SiameseNet(nn.Module):
         self.net         = list(self.net.children())[:-2][0][:-13]
         ##########################################################
         self.pre_weights_0 = self.net[0].weight      
-        self.net[0]        = nn.Conv2d(3, 64, kernel_size=3, stride=2, padding=2)  
+        self.net[0]        = nn.Conv2d(3, 64, kernel_size=3, stride=2, padding=2).cuda()  
         self.net[0].weight.data[:, :, :, :] = self.pre_weights_0
         ##########################################################
         self.pre_weights_2 = self.net[2].weight      
-        self.net[2]        = nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=2)  
+        self.net[2]        = nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=2).cuda()  
         self.net[2].weight.data[:, :, :, :] = self.pre_weights_2
         ##########################################################
         self.liner       = nn.Sequential(nn.Linear(1048576, 4096))
