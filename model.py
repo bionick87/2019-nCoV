@@ -9,7 +9,7 @@ class SiameseNet(nn.Module):
     def __init__(self):
     
         super(SiameseNet, self).__init__()
-        self.alex_net = models.alexnet(pretrained=True).features
+        self.alex_net = models.alexnet(pretrained=False).features
         self.alex_net =  nn.Sequential(self.alex_net[:7],self.alex_net[12])
         #self.liner    = nn.Sequential(nn.Linear(12544, 6272))
         self.liner    = nn.Sequential(nn.Linear(18816, 6272))
