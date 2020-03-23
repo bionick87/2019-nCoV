@@ -35,6 +35,7 @@ class SmallVGG(nn.Module):
         #  VGG model - in test
         net         = models.vgg13(pretrained=True)
         self.svgg        = list(net.children())[:-2][0][:-13]
+        print("Sono qui 1")
         print(self.svgg)
         ##########################################################
         self.pre_weights_0 = self.svgg[0].weight      
@@ -55,6 +56,7 @@ class SiameseNet(nn.Module):
         super(SiameseNet, self).__init__()
         #  VGG model - in test
         self.net         = SmallVGG()
+        print("Sono qui 2")
         print(self.net)
         self.liner       = nn.Sequential(nn.Linear(1048576, 4096))
         self.out         = nn.Linear(4096, 1)
