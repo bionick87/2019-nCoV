@@ -55,8 +55,8 @@ class SiameseNet(nn.Module):
         super(SiameseNet, self).__init__()
         #  VGG model - in test
         self.net         = models.vgg13(pretrained=True).features
-        self.liner       = nn.Sequential(nn.Linear(65536, 4096))
-        self.out         = nn.Linear(4096, 1)
+        self.liner       = nn.Sequential(nn.Linear(32768, 6272))
+        self.out         = nn.Linear(6272, 1)
 
     def cnn(self, x):
         x = self.net(x)
