@@ -8,7 +8,8 @@ import torchvision.models as models
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
-        self.alex_net = models.alexnet(pretrained=False).features
+        self.alex_net = models.alexnet(pretrained=True).features
+        self.alex_net = self.alex_net[:8]
         self.liner    = nn.Sequential(nn.Linear(12544, 6272))
         self.out      = nn.Linear(6272, 1)
 
