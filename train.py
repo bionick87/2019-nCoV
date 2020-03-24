@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import torch
 import torchvision
 import torchvision.datasets as dset
@@ -5,7 +6,6 @@ from   torchvision      import transforms
 from   dataset          import Dataset
 from   torch.utils.data import DataLoader
 from   torch.autograd   import Variable
-import matplotlib.pyplot as plt
 from   model            import SiameseNet
 import time
 import numpy            as np
@@ -23,11 +23,15 @@ if __name__ == '__main__':
     Flags = gflags.FLAGS
     gflags.DEFINE_bool   ("cuda", True, "use cuda")
     ############################################
-    gflags.DEFINE_string ("train_path", "/vol/biomedic2/ns87/conv-19/train", "training folder to be set")
-    gflags.DEFINE_string ("test_path", "/vol/biomedic2/ns87/conv-19/test",   "path of testing folder to be set")
-    gflags.DEFINE_string ("valid_path", "/vol/biomedic2/ns87/conv-19/valid", "path of testing folder to be set")
+    #gflags.DEFINE_string ("train_path", "/vol/biomedic2/ns87/conv-19/train", "training folder to be set")
+    #gflags.DEFINE_string ("test_path", "/vol/biomedic2/ns87/conv-19/test",   "path of testing folder to be set")
+    #gflags.DEFINE_string ("valid_path", "/vol/biomedic2/ns87/conv-19/valid", "path of testing folder to be set")
+    gflags.DEFINE_string ("train_path", "/home/nick/Desktop/dataset/dataset-nConV-2019/train", "training folder to be set")
+    gflags.DEFINE_string ("test_path", "/home/nick/Desktop/dataset/dataset-nConV-2019/test",   "path of testing folder to be set")
+    gflags.DEFINE_string ("valid_path", "/home/nick/Desktop/dataset/dataset-nConV-2019/valid", "path of testing folder to be set")
     ############################################
-    gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save/alexnet_no_pretrain", 'path of testing folder to be set!')
+    #gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save/shufflenet_v2_x1_0", 'path of testing folder to be set!')
+    gflags.DEFINE_string ("save_folder", "/home/nick/Desktop/results/shufflenet_v2_x1_0", 'path of testing folder to be set!')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
@@ -39,7 +43,7 @@ if __name__ == '__main__':
     gflags.DEFINE_integer("max_iter_train", 10000, "number of iteration for the training stage")
     gflags.DEFINE_integer("max_iter_valid", 200, "number of iteration for the valid stage")
     gflags.DEFINE_integer("nepochs", 1000, "number of epoch")
-    gflags.DEFINE_string ("gpu_ids", "0", "gpu ids used to train")
+    gflags.DEFINE_string ("gpu_ids", "0,1,2", "gpu ids used to train")
     Flags(sys.argv)
     #############################################
     trainSet    = Dataset(Flags.train_path,Flags.test_path,Flags.valid_path,Flags.max_iter_train,"train")
@@ -60,7 +64,7 @@ if __name__ == '__main__':
     if Flags.cuda:
         os.environ["CUDA_VISIBLE_DEVICES"] = Flags.gpu_ids
         if len(Flags.gpu_ids.split(",")) > 1:
-           net = torch.nn.DataParallel(net)
+            net = torch.nn.DataParallel(net)
         net.cuda()
     optimizer        = torch.optim.SGD(net.parameters(),lr = Flags.lr, momentum=0.9, nesterov=True)
     sensitivity_list = []
