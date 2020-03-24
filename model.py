@@ -9,7 +9,7 @@ class SiameseNet(nn.Module):
         super(SiameseNet, self).__init__()
         self.net    = models.shufflenet_v2_x1_0(pretrained=True)
         self.net    = list(self.net.children())[:-2][0]
-        self.liner  = nn.Sequential(nn.Linear(12544, 6272))
+        self.liner  = nn.Sequential(nn.Linear(393216, 6272))
         self.out    = nn.Linear(6272, 1)
 
     def cnn(self, x):
