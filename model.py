@@ -49,7 +49,9 @@ class SmallVGG(nn.Module):
     def forward(self, x):
         return self.svgg(x)
 
-# VGG modify it's not VGG 13!
+'''
+
+
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
@@ -70,8 +72,9 @@ class SiameseNet(nn.Module):
         dis  = torch.abs(cnn1 - cnn2)
         out  = self.out(dis)
         return out
-'''
 
+
+'''
 # Resnet
 class SiameseNet(nn.Module):
     def __init__(self):
@@ -94,3 +97,4 @@ class SiameseNet(nn.Module):
         dis  = torch.abs(cnn1 - cnn2)
         out  = self.out(dis)
         return out
+'''

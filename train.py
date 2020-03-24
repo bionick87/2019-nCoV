@@ -30,7 +30,7 @@ if __name__ == '__main__':
     #gflags.DEFINE_string ("test_path", "/home/nick/Desktop/dataset/dataset-nConV-2019/test",   "path of testing folder to be set")
     #gflags.DEFINE_string ("valid_path", "/home/nick/Desktop/dataset/dataset-nConV-2019/valid", "path of testing folder to be set")
     ############################################
-    gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save/resnext50_32x4d", 'path of testing folder to be set!')
+    gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save/vgg13", 'path of testing folder to be set!')
     #gflags.DEFINE_string ("save_folder", "/home/nick/Desktop/results/shufflenet_v2_x1_0", 'path of testing folder to be set!')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")

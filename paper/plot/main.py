@@ -9,34 +9,32 @@ def movingaverage(interval, window_size):
 def createList(r1, r2): 
     return [item for item in range(r1, r2+1)] 
 
-# Define some points:
-fileName  = "/home/nick/Desktop/results/alexnet/valid.txt"
-clean     = []
-with open(fileName, 'r') as f:
-    lines = f.readlines()
-for l in lines:
-    clean.append(float(l.replace("\n", "")))  
-points   = np.array(clean).T
-y = points
-x = createList(0,len(points)-1)
-
-'''
-import numpy as np
-# Interpolate it to new time points
-from scipy.interpolate import interp1d
-#########################################
-linear_interp = interp1d(x, y, kind='cubic')
-xnew = np.arange(0,100)
-linear_results = linear_interp(xnew)
-
-'''
+def getPoints(fileName):
+    clean     = []
+    with open(fileName, 'r') as f:
+        lines = f.readlines()
+    for l in lines:
+        clean.append(float(l.replace("\n", "")))  
+    points   = np.array(clean).T
+    x    = createList(0,len(points)-1)
+    y_av = movingaverage(points, 20)
+    return x,y_av
 
 
 
-y_av = movingaverage(y, 20)
 
-# Plot the data and the interpolation
-from matplotlib import pyplot as plt
-plt.plot(x, y_av, label='linear interp')
-plt.legend()
-plt.show()
+
+
+fig            = plt.figure()
+ax             = fig.add_subplot(111)
+#ax.set_title   ("Validset sensitivity")
+ax.plot        (alexnet_pretrain, '-',  label="Sensitivity",color='r')
+ax.plot        (alexnet_no_pretrain, '-',  label="Sensitivity",color='r')
+ax.set_ylabel  ('Sensitivity (%)')
+ax.set_xlabel  ("Epochs (x100)")
+ax.legend      (loc='lower right')
+handles, labels = plt.gca().get_legend_handles_labels()
+by_label        = OrderedDict(zip(labels, handles))
+plt.legend     (by_label.values(), by_label.keys())
+fig.savefig    (os.path.join             (pathSave, "valid.jpg"))
+
