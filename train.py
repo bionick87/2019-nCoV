@@ -27,7 +27,7 @@ if __name__ == '__main__':
     gflags.DEFINE_string ("test_path", "/vol/biomedic2/ns87/conv-19/test",   "path of testing folder to be set")
     gflags.DEFINE_string ("valid_path", "/vol/biomedic2/ns87/conv-19/valid", "path of testing folder to be set")
     ############################################
-    gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save/alexnet_no_pretrain, 'path of testing folder to be set!')
+    gflags.DEFINE_string ("save_folder", "/vol/biomedic2/ns87/conv-19-save/alexnet_no_pretrain", 'path of testing folder to be set!')
     ############################################
     gflags.DEFINE_integer("workers", 4, "number of dataLoader workers")
     gflags.DEFINE_integer("batch_size", 10, "number of batch size")
@@ -118,23 +118,3 @@ if __name__ == '__main__':
                 print("\n ...Save model")
                 torch.save(net.state_dict(),os.path.join(model_path,"model_"+str(epoch_valid)+'.pt'))
                 epoch_valid   += 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
