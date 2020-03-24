@@ -5,7 +5,7 @@ import torchvision.models as models
 
 
 # ALexNet
-
+'''
 class SiameseNet(nn.Module):
     def __init__(self):
     
@@ -28,9 +28,7 @@ class SiameseNet(nn.Module):
         dis  = torch.abs(cnn1 - cnn2)
         out  = self.out(dis)
         return out
-
-
-
+'''
 '''
 # Small VGG
 class SmallVGG(nn.Module):
@@ -75,7 +73,6 @@ class SiameseNet(nn.Module):
 '''
 
 # Resnet
-'''
 class SiameseNet(nn.Module):
     def __init__(self):
         super(SiameseNet, self).__init__()
@@ -97,4 +94,3 @@ class SiameseNet(nn.Module):
         dis  = torch.abs(cnn1 - cnn2)
         out  = self.out(dis)
         return out
-'''
