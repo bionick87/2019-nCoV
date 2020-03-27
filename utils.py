@@ -3,8 +3,14 @@ from   collections import OrderedDict
 import matplotlib.pyplot as plt
 import os
 import shutil
-from   model import SiameseNet
-
+import torch
+import torchvision
+import torchvision.datasets as dset
+from   torchvision      import transforms
+from   dataset          import Dataset
+from   torch.utils.data import DataLoader
+from   torch.autograd   import Variable
+from   model            import SiameseNet
 
 
 def write_txt(lossList,lossSavePath):
