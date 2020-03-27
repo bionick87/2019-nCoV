@@ -3,6 +3,7 @@ from   collections import OrderedDict
 import matplotlib.pyplot as plt
 import os
 import shutil
+from   model import SiameseNet
 
 
 
@@ -35,6 +36,14 @@ def makeFolder(dirName):
     else:
         shutil.rmtree(dirName)
         os.mkdir(dirName)
+
+
+def loadModel(path):
+    model = SiameseNet()
+    model.load_state_dict(torch.load(path,map_location=torch.device('cuda')))
+    model.cuda()
+    model.eval()
+    return model
 
 def plot_sensitivity(list_valid,pathSave):
     fig            = plt.figure()
