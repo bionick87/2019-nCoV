@@ -53,13 +53,13 @@ if __name__ == "__main__":
 
 ```
 
-Then remember to change the paths within each function
+Then remember to change the paths within each function,
  
-Or download the data(dataset-nConV-2019 and pepdata) from:
+Or download the data (dataset-nConV-2019 and pepdata of SATPdb) from:
 
 https://drive.google.com/open?id=1buUylzkMAM91Qs7z-ndvUKlvr4wbaiSq
 
-after the unzip of data.zip you will find two folders:
+After the unzip of data.zip you will find two folders:
 
 i)  ./data/Dataset-nConV-2019: the dataset that I used to train all the models
 ii) ./data/pepdata:  The SATPdb peptide for the inference 
@@ -100,7 +100,7 @@ gflags.DEFINE_integer("workers", 8, "number of dataLoader workers")
 
 ```
 
-For running the training
+For running the training:
 
 ```
 sh run_train.sh
