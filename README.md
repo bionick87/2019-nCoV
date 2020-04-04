@@ -33,7 +33,7 @@ pip install python-gflags
 pip install text-to-image
 ```
 
-## USE
+## Use
 
 ## Generation of the dataset (COVID-2019 vs Ebola, HIV) 
 
