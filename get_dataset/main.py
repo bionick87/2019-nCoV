@@ -146,6 +146,7 @@ def getPep():
     for l in lines:
         clean.append(l.replace("\n", ""))    
     for pep in clean:
+        # string preprocessing
         if ">" in pep: 
             continue
         if "-" in pep:
@@ -160,9 +161,12 @@ def getPep():
             cv2.imwrite(os.path.join(pathSave,pep+".png"), img) 
 
 if __name__ == "__main__":
+    # Generation dataset
     #getDataset()
+    # Generation HR1 image target
     #getHR1Domain_target()
-    getPep()
+    # generation pep. 
+    #getPep()
 
 
 
