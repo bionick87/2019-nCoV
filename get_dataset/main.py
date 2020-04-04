@@ -65,9 +65,9 @@ def getData(nstrandsList,pathSave):
 
 def getDataset():
     # https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3?report=fasta
-    path_file_nCoV      = "/homes/nsavioli/Desktop/2019-nCoV/virus_genome/2019-nCoV.txt"
-    path_file_HIV       = "/homes/nsavioli/Desktop/2019-nCoV/virus_genome/HIV.txt"
-    path_ebola          = "/homes/nsavioli/Desktop/2019-nCoV/virus_genome/ebola.txt"
+    path_file_nCoV      = "./virus_genome/2019-nCoV.txt"
+    path_file_HIV       = "./virus_genome/HIV.txt"
+    path_ebola          = "./virus_genome/ebola.txt"
     # Dataset folder path 
     path_dataset_fodler = "/vol/biomedic2/ns87/conv-19"
     # Number of RNA vrius strands
@@ -127,8 +127,8 @@ def getDataset():
     ##############################
 
 def getHR1Domain_target():
-    seq_hr1       = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome/HR1.txt"
-    path_save     = "/Users/nicolosavioli/Desktop/2019-nCoV/virus_genome"
+    seq_hr1       = "./virus_genome/HR1.txt"
+    path_save     = "./virus_genome"
     protein_hr1   = readGenSeq(seq_hr1)
     nstrandsP     = wrap(protein_hr1,10)
     getData(nstrandsP,path_save)
@@ -139,8 +139,8 @@ def getPep():
     }
     clean     = []
     cont      = 0
-    path_file = "/home/nick/Desktop/code/2019-nCoV/virus_genome/peptite/antiviral.fasta"
-    pathSave  = "/home/nick/Desktop/pepdata"
+    path_file = "./virus_genome/peptite/antiviral.fasta"
+    pathSave  = "path-to/pepdata"
     with open(path_file, 'r') as f:
         lines = f.readlines()
     for l in lines:
@@ -162,7 +162,7 @@ def getPep():
 
 if __name__ == "__main__":
     # Generation dataset
-    #getDataset()
+    getDataset()
     # Generation HR1 image target
     #getHR1Domain_target()
     # generation pep. 

@@ -1,11 +1,11 @@
-# Artificial Intelligence model for COVID-2019 analysis 
+# Artificial Intelligence model for COVID-2019 drug discovery 
 
 The code is released for research purposes only and not for commercial purposes.
 
 ![alt text](img/deep_model.png)
 
 
-### Prerequisites
+## Prerequisites
 
 Before getting started, it's important to have a working environment with all dependencies satisfied. For this, we recommend using the Anaconda distribution of Python 3.5.
 
@@ -15,7 +15,7 @@ curl -O https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
 bash Anaconda3-2019.03-Linux-x86_64.sh
 ```
 
-So pytorch must be installed, please make sure that cuDNN is installed correctly (https://developer.nvidia.com/cudnn).
+So PyTorch must be installed, please make sure that cuDNN is installed correctly (https://developer.nvidia.com/cudnn).
 
 ```
 conda install pytorch torchvision cudatoolkit=9.2 -c pytorch
@@ -34,25 +34,47 @@ pip install text-to-image
 ```
 
 
-## MODELS DOWNLOAD
-
-### Download pretrained Alexnet 2019-nCoV Siamese Neural Network model from this link:
-
-https://drive.google.com/open?id=18Zu05OagMmaHfQoRJ1_vgM0zwfWwM0Yy
-
+## Model download
 
 ## USE
 
-*  Generation of the dataset (COVID-2019 vs Ebola, HIV) - go to ./get_dataset folder then open the main file (change the paths sequences and the folder where to save the dataset). Or download data (dataset-nConV-2019) from:
+## Generation of the dataset (COVID-2019 vs Ebola, HIV) 
+
+ Go to ./get_dataset folder then open the main file 
+
+Uncomment what you want to generate:
+ 
+```
+
+if __name__ == "__main__":
+    # Generation dataset
+    getDataset()
+
+    # Generation HR1 image target
+    
+    #getHR1Domain_target()
+    
+    # generation pep. 
+    
+    #getPep()
+
+```
+
+Then remember to change the paths within each function
+ 
+Or download the data(dataset-nConV-2019 and pepdata) from:
 
 https://drive.google.com/open?id=1buUylzkMAM91Qs7z-ndvUKlvr4wbaiSq
 
-here you will find two folders:
+after the unzip of data.zip you will find two folders:
 
-i)  Dataset-nConV-2019: the dataset that I used to train all the models
-ii) Pepdata:  The SATPdb peptite for the inference 
+i)  ./data/Dataset-nConV-2019: the dataset that I used to train all the models
+ii) ./data/pepdata:  The SATPdb peptide for the inference 
 
-Then, open the file train.py
+
+## Train Setting 
+
+Open the file train.py
 
 Change the paths where you have located the dataset:
 
@@ -91,7 +113,13 @@ For running the training
 sh run_train.sh
 ```
 
-For the inference:
+
+## Inference Setting 
+
+### Download pre-trained Alexnet 2019-nCoV Siamese Neural Network model from this link:
+
+https://drive.google.com/open?id=18Zu05OagMmaHfQoRJ1_vgM0zwfWwM0Yy
+
 
 Go to the folder ./inference and open the file inference.py and change the following paths:
 
@@ -109,6 +137,9 @@ then:
 ```
 sh run_inference.sh
 ```
+
+The pepdata folder is all 3027 SATPdb peptides (./data/pepdata) 
+
 
 
 ## Authors
