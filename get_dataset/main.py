@@ -163,10 +163,10 @@ def getPep():
 if __name__ == "__main__":
     # Generation dataset
     getDataset()
-    # Generation HR1 image target
-    #getHR1Domain_target()
-    # generation pep. 
-    #getPep()
+    # Generation HR1 images
+    # getHR1Domain_target()
+    # generation SATPdb peptides images
+    # getPep()
 
 
 
