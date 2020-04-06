@@ -5,7 +5,7 @@ The code is released for research purposes only and not for commercial purposes.
 ![alt text](img/deep_model.png)
 
 
-# Prerequisites
+## Prerequisites
 
 Before getting started, it's important to have a working environment with all dependencies satisfied. For this, we recommend using the Anaconda distribution of Python 3.5.
 
@@ -33,9 +33,9 @@ pip install python-gflags
 pip install text-to-image
 ```
 
-# Use
+## Use
 
-## Generation of the dataset (COVID-2019 vs Ebola, HIV) 
+### Generation of the dataset (COVID-2019 vs Ebola, HIV) 
 
  Go to ./get_dataset folder then open the main file 
 
@@ -63,7 +63,7 @@ i)  ./data/Dataset-nConV-2019: the dataset that I used to train all the models
 ii) ./data/pepdata:  The SATPdb peptide for the inference 
 
 
-## Training Setting 
+### Training Setting 
 
 Open the file train.py
 
@@ -105,9 +105,9 @@ sh run_train.sh
 ```
 
 
-## Inference Setting 
+### Inference Setting 
 
-### Download pre-trained Alexnet 2019-nCoV Siamese Neural Network model from this link:
+#### Download pre-trained Alexnet 2019-nCoV Siamese Neural Network model from this link:
 
 https://drive.google.com/open?id=18Zu05OagMmaHfQoRJ1_vgM0zwfWwM0Yy
 
@@ -133,14 +133,14 @@ The pepdata folder is all 3027 SATPdb peptides (./data/pepdata)
 
 
 
-# Authors
+## Authors
 
 * ** Nicolò Savioli, PhD **
 
 Please if you find this code useful for all your research activities, cite it.
 
 
-# License
+## License
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
