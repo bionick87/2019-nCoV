@@ -63,7 +63,7 @@ i)  ./data/Dataset-nConV-2019: the dataset that I used to train all the models
 ii) ./data/pepdata:  The SATPdb peptide for the inference 
 
 
-## Train Setting 
+## Training Setting 
 
 Open the file train.py
 
