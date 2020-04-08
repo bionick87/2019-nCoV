@@ -7,10 +7,7 @@ The novelty of the proposed approach, compared to others, lies in a precise trai
 Where a Siamese Neural Network (SNN) has been trained to distingue the whole 2019-nCoV protein sequence amongst two different viruses family such as HIV-1 and Ebola.
 In this way, the present deep learning system has precise knowledge of peptide linkage among 2019-nCoV protein structure and differently, of other works, is not trivially trained on public datasets that have not been provided any ligand-peptide information for 2019-nCoV. 
 Suddenly, the SNN shows a sensitivity of 83% of peptide affinity classification, where $3027$ peptides on SATPdb bank have been tested towards the specific region HR1 of 2019-nCoV exhibiting an affinity of 93% for the peptidyl-prolyl cis-trans isomerase (PPIase) peptide. 
-This affinity between PPIase and HR1 can open new horizons of research since several scientific papers have already shown that CsA immunosuppression drug, a main inhibitor of PPIase,  suppress the reproduction of different CoV virus included SARS-CoV and MERS-CoV.
-
-
-## The code is released for research purposes only and not for commercial purposes.
+This affinity between PPIase and HR1 can open new horizons of research since several scientific papers have already shown that CsA immunosuppression drug, a main inhibitor of PPIase,  suppress the reproduction of different CoV virus included SARS-CoV and MERS-CoV. The code is released for research purposes only and not for commercial purposes.
 
 
 ![alt text](img/deep_model.png)
