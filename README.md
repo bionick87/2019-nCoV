@@ -1,6 +1,17 @@
 # Artificial Intelligence model for COVID-2019 drug discovery 
 
-The code is released for research purposes only and not for commercial purposes.
+The novel coronavirus (2019-nCoV) has been declared to be a new international health emergence and no specific drug has been yet identified.
+Several methods are currently being evaluated such as protease and glycosylated spike (S) protein inhibitors, that outlines the main fusion site among coronavirus and host cells. 
+Notwithstanding, the Heptad Repeat 1 (HR1) domain on the glycosylated spike (S) protein is the region with less mutability and then the most encouraging target for new inhibitors drugs. 
+The novelty of the proposed approach, compared to others, lies in a precise training of a deep neural network toward the 2019-nCoV virus.
+Where a Siamese Neural Network (SNN) has been trained to distingue the whole 2019-nCoV protein sequence amongst two different viruses family such as HIV-1 and Ebola.
+In this way, the present deep learning system has precise knowledge of peptide linkage among 2019-nCoV protein structure and differently, of other works, is not trivially trained on public datasets that have not been provided any ligand-peptide information for 2019-nCoV. 
+Suddenly, the SNN shows a sensitivity of 83% of peptide affinity classification, where $3027$ peptides on SATPdb bank have been tested towards the specific region HR1 of 2019-nCoV exhibiting an affinity of 93% for the peptidyl-prolyl cis-trans isomerase (PPIase) peptide. 
+This affinity between PPIase and HR1 can open new horizons of research since several scientific papers have already shown that CsA immunosuppression drug, a main inhibitor of PPIase,  suppress the reproduction of different CoV virus included SARS-CoV and MERS-CoV.
+
+
+## The code is released for research purposes only and not for commercial purposes.
+
 
 ![alt text](img/deep_model.png)
 
@@ -135,9 +146,18 @@ The pepdata folder is all 3027 SATPdb peptides (./data/pepdata)
 
 ## Authors
 
-* ** Nicolò Savioli, PhD **
+** Nicolò Savioli, PhD **
 
-Please if you find this code useful for all your research activities, cite it.
+Please if you find this code useful for all your research activities, cite it:
+
+@misc{savioli2020oneshot,
+    title={One-shot screening of potential peptide ligands on HR1 domain in COVID-19 glycosylated spike (S) protein with deep siamese network},
+    author={Nicolò Savioli},
+    year={2020},
+    eprint={2004.02136},
+    archivePrefix={arXiv},
+    primaryClass={q-bio.QM}
+}
 
 
 ## License
