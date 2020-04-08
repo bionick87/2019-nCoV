@@ -150,6 +150,7 @@ The pepdata folder is all 3027 SATPdb peptides (./data/pepdata)
 
 Please if you find this code useful for all your research activities, cite it:
 
+```
 @misc{savioli2020oneshot,
     title={One-shot screening of potential peptide ligands on HR1 domain in COVID-19 glycosylated spike (S) protein with deep siamese network},
     author={Nicolò Savioli},
@@ -158,7 +159,7 @@ Please if you find this code useful for all your research activities, cite it:
     archivePrefix={arXiv},
     primaryClass={q-bio.QM}
 }
-
+```
 
 ## License
 
